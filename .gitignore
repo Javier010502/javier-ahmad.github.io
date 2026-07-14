@@ -1,0 +1,3 @@
+# keep nothing sensitive
+.DS_Store
+*.log
