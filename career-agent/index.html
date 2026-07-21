@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automation Career Agent — Javier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-page: #08090a;
+      --bg-panel: #0f1011;
+      --bg-surface: #191a1b;
+      --bg-surface-hover: #28282c;
+      --text-primary: #f7f8f8;
+      --text-secondary: #d0d6e0;
+      --text-tertiary: #8a8f98;
+      --text-quaternary: #62666d;
+      --accent: #5e6ad2;
+      --accent-bright: #7170ff;
+      --accent-hover: #828fff;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --border: rgba(255,255,255,0.08);
+      --border-subtle: rgba(255,255,255,0.05);
+      --radius: 8px;
+      --radius-sm: 6px;
+      --radius-lg: 12px;
+      --shadow-elevated: rgba(0,0,0,0.4) 0px 2px 4px;
+      --shadow-dialog: rgba(0,0,0,0) 0px 8px 2px, rgba(0,0,0,0.01) 0px 5px 2px, rgba(0,0,0,0.04) 0px 3px 2px, rgba(0,0,0,0.07) 0px 1px 1px, rgba(0,0,0,0.08) 0px 0px 1px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: 'cv01', 'ss03';
+    }
+    ::selection { background: var(--accent); color: white; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-page); }
+    ::-webkit-scrollbar-thumb { background: var(--bg-surface-hover); border-radius: 3px; }
+
+    /* Layout */
+    .app { display: flex; min-height: 100vh; }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border-subtle);
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 100;
+      overflow-y: auto;
+    }
+    .sidebar-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 32px; padding: 0 8px; }
+    .sidebar-logo svg { width: 28px; height: 28px; flex-shrink: 0; }
+    .sidebar-logo span { font-size: 15px; font-weight: 510; color: var(--text-primary); letter-spacing: -0.3px; }
+    .sidebar-logo small { font-size: 11px; color: var(--text-quaternary); display: block; margin-top: -2px; font-weight: 400; letter-spacing: -0.15px; }
+    .nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    .nav a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 12px; border-radius: var(--radius-sm);
+      font-size: 14px; font-weight: 500; color: var(--text-secondary);
+      text-decoration: none; transition: all 0.15s;
+    }
+    .nav a:hover { background: rgba(255,255,255,0.04); color: var(--text-primary); }
+    .nav a.active { background: rgba(255,255,255,0.05); color: var(--text-primary); }
+    .nav a svg { width: 18px; height: 18px; opacity: 0.7; flex-shrink: 0; }
+    .nav a.active svg { opacity: 1; }
+    .nav-label { font-size: 11px; font-weight: 500; color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.6px; padding: 16px 12px 6px; }
+
+    .sidebar-footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 16px 8px 0;
+      margin-top: auto;
+    }
+    .sidebar-footer .user-info { display: flex; align-items: center; gap: 10px; }
+    .sidebar-footer .avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--accent); display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600; color: white; flex-shrink: 0;
+    }
+    .sidebar-footer .name { font-size: 13px; font-weight: 500; color: var(--text-primary); }
+    .sidebar-footer .role { font-size: 11px; color: var(--text-quaternary); }
+    .last-updated { font-size: 11px; color: var(--text-quaternary); margin-top: 8px; }
+
+    /* Main */
+    .main {
+      margin-left: 260px;
+      flex: 1;
+      padding: 32px 40px 80px;
+      max-width: 1100px;
+    }
+
+    /* Header */
+    .page-header { margin-bottom: 32px; }
+    .page-header h1 { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; }
+    .page-header p { font-size: 15px; color: var(--text-tertiary); margin-top: 4px; letter-spacing: -0.1px; }
+    .page-header .goal-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 12px; padding: 6px 14px;
+      background: rgba(94,106,210,0.12);
+      border: 1px solid rgba(94,106,210,0.25);
+      border-radius: 9999px;
+      font-size: 12px; font-weight: 500; color: var(--accent-bright);
+    }
+
+    /* Stats Row */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+    .stat-card .stat-value { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; }
+    .stat-card .stat-label { font-size: 13px; color: var(--text-tertiary); margin-top: 2px; }
+    .stat-card .stat-icon { margin-bottom: 8px; width: 28px; height: 28px; border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+    .stat-card .stat-icon.time { background: rgba(94,106,210,0.15); color: var(--accent-bright); }
+    .stat-card .stat-icon.milestone { background: rgba(16,185,129,0.15); color: var(--success); }
+    .stat-card .stat-icon.competency { background: rgba(245,158,11,0.15); color: var(--warning); }
+    .stat-card .stat-icon.resource { background: rgba(239,68,68,0.15); color: var(--danger); }
+
+    /* Cards */
+    .card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+    .card-header h2 { font-size: 17px; font-weight: 590; letter-spacing: -0.2px; }
+    .card-header .badge {
+      font-size: 11px; font-weight: 500; padding: 3px 10px;
+      border-radius: 9999px; background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border); color: var(--text-secondary);
+    }
+    .card-header .badge.success { background: rgba(16,185,129,0.1); border-color: rgba(16,185,129,0.25); color: var(--success); }
+    .card-header .badge.warning { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.25); color: var(--warning); }
+
+    /* Milestone Timeline */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 15px; top: 8px; bottom: 8px;
+      width: 2px; background: var(--border);
+    }
+    .timeline-item {
+      position: relative; padding: 0 0 24px 48px;
+      transition: opacity 0.2s;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute; left: 8px; top: 6px;
+      width: 16px; height: 16px; border-radius: 50%;
+      border: 2px solid var(--border); background: var(--bg-panel);
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.3s;
+    }
+    .timeline-dot.completed { border-color: var(--success); background: var(--success); }
+    .timeline-dot.in-progress { border-color: var(--accent); background: var(--accent); animation: pulse 2s infinite; }
+    .timeline-dot.not-started { border-color: var(--text-quaternary); }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(94,106,210,0.3); }
+      50% { box-shadow: 0 0 0 6px rgba(94,106,210,0.1); }
+    }
+    .timeline-dot svg { width: 8px; height: 8px; color: white; opacity: 0; transition: opacity 0.3s; }
+    .timeline-dot.completed svg { opacity: 1; }
+    .timeline-content {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .timeline-content:hover { background: rgba(255,255,255,0.04); border-color: var(--border); }
+    .timeline-content h3 { font-size: 15px; font-weight: 590; margin-bottom: 4px; }
+    .timeline-content .meta { font-size: 13px; color: var(--text-tertiary); }
+    .timeline-content .deadline { font-size: 12px; color: var(--text-quaternary); margin-top: 6px; }
+    .timeline-content .status-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      margin-top: 8px; padding: 2px 10px;
+      border-radius: 9999px; font-size: 11px; font-weight: 500;
+    }
+    .status-tag.in-progress { background: rgba(94,106,210,0.1); color: var(--accent-bright); }
+    .status-tag.completed { background: rgba(16,185,129,0.1); color: var(--success); }
+    .status-tag.not-started { background: rgba(255,255,255,0.03); color: var(--text-tertiary); }
+
+    /* Roadmap Table */
+    .roadmap-table { width: 100%; border-collapse: collapse; }
+    .roadmap-table th {
+      text-align: left; font-size: 11px; font-weight: 600;
+      color: var(--text-quaternary); text-transform: uppercase; letter-spacing: 0.6px;
+      padding: 10px 12px; border-bottom: 1px solid var(--border-subtle);
+    }
+    .roadmap-table td {
+      padding: 12px; font-size: 13px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+    }
+    .roadmap-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .roadmap-table .comp-name { color: var(--text-primary); font-weight: 500; }
+    .roadmap-table .sumber { font-size: 12px; color: var(--text-quaternary); max-width: 200px; }
+    .roadmap-table .status-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 2px 8px; border-radius: 9999px; font-size: 11px; font-weight: 500;
+      cursor: pointer; user-select: none; transition: all 0.15s;
+      border: 1px solid transparent;
+    }
+    .status-badge.not-started { background: rgba(255,255,255,0.04); color: var(--text-tertiary); border-color: var(--border-subtle); }
+    .status-badge.in-progress { background: rgba(94,106,210,0.12); color: var(--accent-bright); border-color: rgba(94,106,210,0.25); }
+    .status-badge.completed { background: rgba(16,185,129,0.12); color: var(--success); border-color: rgba(16,185,129,0.25); }
+    .status-badge:hover { filter: brightness(1.2); }
+
+    /* Progress Bar */
+    .progress-section { margin-bottom: 24px; }
+    .progress-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .progress-header span { font-size: 13px; color: var(--text-tertiary); }
+    .progress-header strong { font-size: 15px; color: var(--text-primary); }
+    .progress-bar-track {
+      width: 100%; height: 6px; background: rgba(255,255,255,0.05);
+      border-radius: 9999px; overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%; border-radius: 9999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+      transition: width 0.8s ease;
+      width: 0%;
+    }
+
+    /* Expand / Collapse */
+    .expand-btn {
+      background: none; border: none; color: var(--text-tertiary);
+      cursor: pointer; font-size: 13px; padding: 4px 0;
+      transition: color 0.15s;
+    }
+    .expand-btn:hover { color: var(--text-primary); }
+
+    /* Status Dropdown */
+    .status-select {
+      background: var(--bg-surface); color: var(--text-primary);
+      border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 4px 8px; font-size: 12px; font-family: inherit;
+      outline: none; cursor: pointer;
+    }
+    .status-select:focus { border-color: var(--accent); }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; background: rgba(0,0,0,0.85);
+      z-index: 200; align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      max-width: 480px;
+      width: 90%;
+      box-shadow: var(--shadow-dialog);
+    }
+    .modal h3 { font-size: 17px; font-weight: 590; margin-bottom: 16px; }
+    .modal p { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; }
+    .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+    .btn {
+      padding: 8px 16px; border-radius: var(--radius-sm);
+      font-size: 13px; font-weight: 500; font-family: inherit;
+      border: 1px solid var(--border); cursor: pointer;
+      transition: all 0.15s; background: rgba(255,255,255,0.03);
+      color: var(--text-secondary);
+    }
+    .btn:hover { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+    .btn-primary { background: var(--accent); border-color: var(--accent); color: white; }
+    .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+    .btn-success { background: var(--success); border-color: var(--success); color: white; }
+    .btn-success:hover { opacity: 0.9; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 20px;
+      box-shadow: var(--shadow-dialog);
+      font-size: 13px; color: var(--text-secondary);
+      z-index: 300;
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.3s;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast strong { color: var(--text-primary); }
+
+    /* Notes section */
+    .notes-list { display: flex; flex-direction: column; gap: 12px; }
+    .note-item {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 14px 18px;
+    }
+    .note-item .note-title { font-size: 14px; font-weight: 590; margin-bottom: 2px; }
+    .note-item .note-date { font-size: 11px; color: var(--text-quaternary); margin-bottom: 6px; }
+    .note-item .note-body { font-size: 13px; color: var(--text-secondary); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; padding: 20px; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .main { padding: 24px 28px; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Print */
+    @media print {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .card { break-inside: avoid; }
+      .status-badge, .status-select { border: 1px solid #ccc !important; }
+    }
+
+    /* Donut Chart */
+    .donut-wrap { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+    .donut-svg { flex-shrink: 0; }
+    .donut-legend { display: flex; flex-direction: column; gap: 8px; }
+    .donut-legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-secondary); }
+    .donut-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .donut-legend-item strong { color: var(--text-primary); }
+
+    /* Training Links */
+    .training-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+    .training-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: all 0.2s;
+    }
+    .training-card:hover { background: rgba(255,255,255,0.04); border-color: var(--border); }
+    .training-card .tag {
+      display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+      padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
+    }
+    .training-card .tag.free { background: rgba(16,185,129,0.12); color: var(--success); }
+    .training-card .tag.trial { background: rgba(245,158,11,0.12); color: var(--warning); }
+    .training-card h4 { font-size: 14px; font-weight: 590; margin-bottom: 4px; }
+    .training-card p { font-size: 12px; color: var(--text-tertiary); margin-bottom: 10px; line-height: 1.5; }
+    .training-card a {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 12px; font-weight: 500; color: var(--accent-bright);
+      text-decoration: none;
+    }
+    .training-card a:hover { color: var(--accent-hover); }
+    .training-card .platform { font-size: 11px; color: var(--text-quaternary); margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 6v6l4 2"/>
+      </svg>
+      <div>
+        <span>Career Agent</span>
+        <small>Automation Engineer</small>
+      </div>
+    </div>
+    <nav class="nav">
+      <div class="nav-label">Navigasi</div>
+      <a href="#dashboard" class="active" onclick="switchTab('dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+        Dashboard
+      </a>
+      <a href="#milestones" onclick="switchTab('milestones')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Milestones
+      </a>
+      <a href="#roadmap" onclick="switchTab('roadmap')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 18 9 18 11 12 13 6 17 12 23 12"/></svg>
+        Roadmap
+      </a>
+      <a href="#progress" onclick="switchTab('progress')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Progress
+      </a>
+      <a href="#training" onclick="switchTab('training')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Training
+      </a>
+      <a href="#notes" onclick="switchTab('notes')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Catatan
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <div class="avatar">J</div>
+        <div>
+          <div class="name">Javier</div>
+          <div class="role">Teknik Fisika · O&G Track</div>
+        </div>
+      </div>
+      <div class="last-updated" id="sidebarUpdated">Terakhir diperbarui: —</div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main">
+
+    <!-- ===================== DASHBOARD ===================== -->
+    <section id="tab-dashboard">
+      <div class="page-header">
+        <h1>Automation Career Dashboard</h1>
+        <p>Tracking progress menuju target: Senior Automation & Instrument Engineer di sektor Oil & Gas</p>
+        <div class="goal-badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          3–5 Year Goal: Lead major automation project in Oil & Gas
+        </div>
+      </div>
+
+      <div class="stats-row" id="statsRow">
+        <div class="stat-card">
+          <div class="stat-icon time">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="stat-value" id="statM1Period">Q3-2026</div>
+          <div class="stat-label">Milestone Aktif</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon milestone">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="stat-value" id="statCompleted">0</div>
+          <div class="stat-label">Kompetensi Selesai</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon competency">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="stat-value" id="statTotal">6</div>
+          <div class="stat-label">Total Kompetensi</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon resource">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div class="stat-value" id="statProgress">0%</div>
+          <div class="stat-label">Progress Keseluruhan</div>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="card progress-section">
+        <div class="progress-header">
+          <strong>Progress Kompetensi</strong>
+          <span id="progressLabel">0 / 6 selesai</span>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="progressFill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <!-- Quick Milestone -->
+      <div class="card">
+        <div class="card-header">
+          <h2>Milestone Saat Ini</h2>
+          <span class="badge warning">Q3-2026</span>
+        </div>
+        <div class="timeline" id="timelineDashboard"></div>
+      </div>
+    </section>
+
+    <!-- ===================== MILESTONES ===================== -->
+    <section id="tab-milestones" style="display:none">
+      <div class="page-header">
+        <h1>Milestone Tracker</h1>
+        <p>Target skill per kuartal dengan bukti kompetensi yang dibutuhkan</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>Timeline Milestone</h2>
+          <span class="badge">Klik item untuk update status</span>
+        </div>
+        <div class="timeline" id="timelineMilestones"></div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <div class="card-header">
+          <h2>Catatan Cepat</h2>
+        </div>
+        <div style="display:flex;gap:12px;align-items:flex-start">
+          <input type="text" id="noteInput" placeholder="Tambah catatan baru..." 
+            style="flex:1;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-sm);
+            padding:10px 14px;color:var(--text-primary);font-family:inherit;font-size:14px;outline:none">
+          <button class="btn btn-primary" onclick="addNote()">Tambah</button>
+        </div>
+        <div id="quickNotes" style="margin-top:16px;display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+    </section>
+
+    <!-- ===================== ROADMAP ===================== -->
+    <section id="tab-roadmap" style="display:none">
+      <div class="page-header">
+        <h1>Roadmap Kompetensi</h1>
+        <p>Rencana pembelajaran detail untuk milestone PID Tuning fundamentals</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>PID Tuning Fundamentals</h2>
+          <span class="badge">Klik status untuk mengubah</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="roadmap-table" id="roadmapTable">
+            <thead>
+              <tr>
+                <th>Kompetensi</th>
+                <th>Level Sekarang</th>
+                <th>Target</th>
+                <th>Sumber Belajar</th>
+                <th>Estimasi</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="roadmapBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROGRESS ===================== -->
+    <section id="tab-progress" style="display:none">
+      <div class="page-header">
+        <h1>Visualisasi Progress</h1>
+        <p>Lihat perkembangan kompetensi secara visual</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>Progress Keseluruhan</h2>
+          <span class="badge success" id="progressSummary">0% selesai</span>
+        </div>
+        <div class="donut-wrap">
+          <div class="donut-svg">
+            <svg width="180" height="180" viewBox="0 0 180 180">
+              <circle cx="90" cy="90" r="72" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="16"/>
+              <circle cx="90" cy="90" r="72" fill="none" stroke="#10b981" stroke-width="16" stroke-linecap="round" id="donutCompleted" stroke-dasharray="0 452" transform="rotate(-90 90 90)" style="transition: stroke-dasharray 0.8s ease"/>
+              <circle cx="90" cy="90" r="72" fill="none" stroke="#7170ff" stroke-width="16" stroke-linecap="round" id="donutInProgress" stroke-dasharray="0 452" transform="rotate(-90 90 90)" style="transition: stroke-dasharray 0.8s ease"/>
+              <text x="90" y="90" text-anchor="middle" dominant-baseline="central" id="donutText" fill="#f7f8f8" font-size="32" font-weight="700" font-family="Inter">0%</text>
+            </svg>
+          </div>
+          <div class="donut-legend">
+            <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#10b981"></span> Selesai: <strong id="legendCompleted">0</strong></div>
+            <div class="donut-legend-item"><span class="donut-legend-dot" style="background:#7170ff"></span> In Progress: <strong id="legendInProgress">0</strong></div>
+            <div class="donut-legend-item"><span class="donut-legend-dot" style="background:rgba(255,255,255,0.1)"></span> Not Started: <strong id="legendNotStarted">0</strong></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>Progress per Kompetensi</h2>
+        </div>
+        <div id="progressBars"></div>
+      </div>
+      <div class="card" style="margin-top:24px">
+        <div class="card-header">
+          <h2>Ringkasan Waktu</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:16px">
+            <div style="font-size:13px;color:var(--text-tertiary)">Estimasi Total</div>
+            <div style="font-size:24px;font-weight:600;margin-top:4px">7 minggu</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.02);border:1px solid var(--border-subtle);border-radius:var(--radius);padding:16px">
+            <div style="font-size:13px;color:var(--text-tertiary)">Deadline Milestone</div>
+            <div style="font-size:24px;font-weight:600;margin-top:4px;color:var(--accent-bright)">30 Sep 2026</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRAINING ===================== -->
+    <section id="tab-training" style="display:none">
+      <div class="page-header">
+        <h1>Training Gratis & Sumber Belajar</h1>
+        <p>Kursus online gratis dan trial untuk mendukung milestone skill Anda</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>PID Control & Process Control</h2>
+          <span class="badge success">Gratis</span>
+        </div>
+        <div class="training-grid">
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">YouTube · 25 menit</div>
+            <h4>PID Controller — Digi-Key</h4>
+            <p>Pengantar komprehensif PID controller: komponen, fungsi, aplikasi, dan contoh implementasi kode.</p>
+            <a href="https://www.classcentral.com/classroom/youtube-what-is-a-pid-controller-digikey-206038" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">YouTube · 25 menit</div>
+            <h4>PID Controllers — Churchill CompSci</h4>
+            <p>Pelajari komponen PID, aplikasi, dan cara mencapai stable control system. Sertakan simulasi langsung.</p>
+            <a href="https://www.classcentral.com/classroom/youtube-pid-controllers-138952" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">Class Central (61+ kursus)</div>
+            <h4>80+ PID Controller Online Courses</h4>
+            <p>Katalog kursus PID dari berbagai platform. Filter: Free course (61 hasil), Beginner sampai Advanced.</p>
+            <a href="https://www.classcentral.com/subject/pid-controllers" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag trial">TRIAL 7 HARI</span>
+            <div class="platform">RealPars · $50/bln setelah trial</div>
+            <h4>PID Controller Training</h4>
+            <p>Kursus lengkap PID: tuning, simulasi, loop testing, implementasi Siemens & Allen Bradley. Sertifikat.</p>
+            <a href="https://www.realpars.com/skillpaths/pid-controller" target="_blank">Buka →</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>DCS, Safety & Advanced Automation</h2>
+          <span class="badge">Lanjutan</span>
+        </div>
+        <div class="training-grid">
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">YouTube Playlist</div>
+            <h4>DCS Training — IT & Automation Academy</h4>
+            <p>Seri video DCS untuk pemula: arsitektur, konfigurasi, perbedaan dengan PLC/SCADA.</p>
+            <a href="https://www.youtube.com/playlist?list=PLDJvwEGpPRLaFolKZM-bhYcUawZnDEbdE" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag trial">TRIAL</span>
+            <div class="platform">RealPars</div>
+            <h4>DCS Fundamentals</h4>
+            <p>Memahami DCS, perbedaan dari PLC dan SCADA, cara membaca simbol P&ID.</p>
+            <a href="https://www.realpars.com/courses/dcs-fundamentals" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">Instrumentation Tools</div>
+            <h4>Free SIS Training Course</h4>
+            <p>Kursus gratis Safety Instrumented System (SIS) dan functional safety di industri proses.</p>
+            <a href="https://instrumentationtools.com/free-safety-instrumented-system-training-course/" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">efunctionalsafety.com</div>
+            <h4>Free IEC 61511 Guide</h4>
+            <p>Panduan gratis IEC 61511: terminologi SIL, safety life-cycle, dan link referensi lanjutan.</p>
+            <a href="https://efunctionalsafety.com/iec-61511-guide/" target="_blank">Buka →</a>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>Platform & Referensi Utama</h2>
+          <span class="badge">Belajar Mandiri</span>
+        </div>
+        <div class="training-grid">
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">ISA (International Society of Automation)</div>
+            <h4>ISA Training & Whitepapers</h4>
+            <p>Artikel teknis, whitepaper, dan modul training gratis dari standar industri otomatisasi global.</p>
+            <a href="https://www.isa.org/training" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">Class Central</div>
+            <h4>Control Systems Courses</h4>
+            <p>84+ kursus control systems dari universitas dan platform terkemuka. Filter gratis & bersertifikat.</p>
+            <a href="https://www.classcentral.com/subject/control-systems" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">Wevolver</div>
+            <h4>Mastering PID Tuning — Comprehensive Guide</h4>
+            <p>Panduan lengkap PID control fundamentals dan advanced tuning strategies.</p>
+            <a href="https://www.wevolver.com/article/mastering-pid-tuning-the-comprehensive-guide" target="_blank">Buka →</a>
+          </div>
+          <div class="training-card">
+            <span class="tag free">GRATIS</span>
+            <div class="platform">TLK Energy</div>
+            <h4>Practical PID Tuning Guide</h4>
+            <p>Step-by-step metode praktis untuk menentukan parameter PID yang baik untuk aplikasi tertentu.</p>
+            <a href="https://tlk-energy.de/blog-en/practical-pid-tuning-guide" target="_blank">Buka →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== NOTES ===================== -->
+    <section id="tab-notes" style="display:none">
+      <div class="page-header">
+        <h1>Catatan & Log</h1>
+        <p>Riwayat sesi, update progress, dan keputusan penting</p>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h2>Semua Catatan</h2>
+          <span class="badge" id="notesCount">0 catatan</span>
+        </div>
+        <div class="notes-list" id="notesList"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// =========== DATA ===========
+const DEFAULT_DATA = {
+  last_updated: "2024-07-29",
+  long_term_goal: "Lead major automation project in Oil & Gas within 3-5 years",
+  milestones: [
+    {
+      id: "M1",
+      period: "Q3-2026",
+      skill_target: "PID Tuning fundamentals",
+      evidence_required: "sertifikasi/proyek simulasi",
+      status: "not_started",
+      deadline: "2026-09-30"
+    }
+  ],
+  notes: [
+    {
+      type: "roadmap",
+      title: "PID Tuning Fundamentals Roadmap",
+      date: "2024-07-29",
+      content: [
+        { kompetensi: "Dasar-dasar Kontrol PID", level: "Belum dimulai", target: "Paham Konsep Dasar", sumber: "Artikel ISA.org 'Fundamentals of PID Control', dokumentasi vendor Honeywell/Emerson/Yokogawa", estimasi: "1 minggu", status: "not_started" },
+        { kompetensi: "Proportional (P) Control", level: "Belum dimulai", target: "Paham Kp, Offset", sumber: "Bagian 'Proportional' dari artikel ISA, simulasi Python/simulasi PLC, contoh kasus level/flow control", estimasi: "1 minggu", status: "not_started" },
+        { kompetensi: "Integral (I) Control", level: "Belum dimulai", target: "Paham Ki, Reset", sumber: "Bagian 'Integral' artikel ISA, simulasi offset removal, contoh temperature control", estimasi: "1 minggu", status: "not_started" },
+        { kompetensi: "Derivative (D) Control", level: "Belum dimulai", target: "Paham Kd, TD", sumber: "Bagian 'Derivative' artikel ISA, simulasi stabilitas, studi kasus noisy signal", estimasi: "1 minggu", status: "not_started" },
+        { kompetensi: "Parameter Tuning Methods", level: "Belum dimulai", target: "Paham Ziegler-Nichols, Cohen-Coon, manual tuning", sumber: "Buku teks kontrol proses, artikel teknis tuning, video tutorial Controlguru/RealPars", estimasi: "2 minggu", status: "not_started" },
+        { kompetensi: "Tantangan Tuning PID", level: "Belum dimulai", target: "Paham Overshoot, Instabilitas, Noise, Deadtime", sumber: "Bagian 'Derivative' artikel ISA, whitepaper PID tuning for challenging processes", estimasi: "1 minggu", status: "not_started" }
+      ]
+    }
+  ],
+  quick_notes: []
+};
+
+let data = {};
+try {
+  const stored = localStorage.getItem('careerAgentData');
+  if (stored) {
+    data = JSON.parse(stored);
+  } else {
+    data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+    localStorage.setItem('careerAgentData', JSON.stringify(data));
+  }
+} catch(e) {
+  data = JSON.parse(JSON.stringify(DEFAULT_DATA));
+}
+
+// =========== HELPERS ===========
+function saveData() {
+  localStorage.setItem('careerAgentData', JSON.stringify(data));
+}
+
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  t.innerHTML = msg;
+  t.className = 'toast show';
+  if (type) t.style.borderLeft = `3px solid ${type === 'success' ? '#10b981' : type === 'warning' ? '#f59e0b' : '#5e6ad2'}`;
+  setTimeout(() => { t.className = 'toast'; }, 3000);
+}
+
+function statusIcon(status) {
+  if (status === 'completed') return '✓';
+  if (status === 'in_progress') return '◉';
+  return '○';
+}
+
+function statusLabel(status) {
+  const map = { 'not_started': 'Not Started', 'in_progress': 'In Progress', 'completed': 'Completed' };
+  return map[status] || status;
+}
+
+function statusTag(status) {
+  if (status === 'completed') return `<span class="status-tag completed">✓ Selesai</span>`;
+  if (status === 'in_progress') return `<span class="status-tag in-progress">◉ In Progress</span>`;
+  return `<span class="status-tag not-started">○ Not Started</span>`;
+}
+
+function statusBadge(status) {
+  return `<span class="status-badge ${status}" onclick="cycleStatus(this)" data-status="${status}">${statusLabel(status)}</span>`;
+}
+
+// =========== TABS ===========
+function switchTab(name) {
+  const tabs = ['dashboard','milestones','roadmap','progress','training','notes'];
+  tabs.forEach(t => {
+    document.getElementById('tab-' + t).style.display = t === name ? 'block' : 'none';
+  });
+  document.querySelectorAll('.nav a').forEach(a => a.classList.remove('active'));
+  document.querySelector(`.nav a[href="#${name}"]`).classList.add('active');
+  if (name === 'dashboard') renderDashboard();
+  if (name === 'milestones') renderMilestones();
+  if (name === 'roadmap') renderRoadmap();
+  if (name === 'progress') renderProgress();
+  if (name === 'notes') renderNotes();
+  window.scrollTo(0, 0);
+}
+
+// =========== DASHBOARD ===========
+function renderDashboard() {
+  const activeMilestone = data.milestones[0];
+  document.getElementById('statM1Period').textContent = activeMilestone.period;
+  
+  const allComp = data.notes[0]?.content || [];
+  const completed = allComp.filter(c => c.status === 'completed').length;
+  const inProgress = allComp.filter(c => c.status === 'in_progress').length;
+  const total = allComp.length;
+  
+  document.getElementById('statCompleted').textContent = completed;
+  document.getElementById('statTotal').textContent = total;
+  const pct = total > 0 ? Math.round((completed/total)*100) : 0;
+  document.getElementById('statProgress').textContent = pct + '%';
+  document.getElementById('progressLabel').textContent = `${completed} / ${total} selesai`;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('sidebarUpdated').textContent = `Terakhir diperbarui: ${data.last_updated}`;
+
+  // Timeline
+  let html = '';
+  data.milestones.forEach(m => {
+    const dotClass = m.status === 'completed' ? 'completed' : m.status === 'in_progress' ? 'in-progress' : 'not-started';
+    html += `
+      <div class="timeline-item" onclick="showMilestoneModal('${m.id}')">
+        <div class="timeline-dot ${dotClass}">
+          ${m.status === 'completed' ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' : ''}
+        </div>
+        <div class="timeline-content">
+          <h3>${m.skill_target}</h3>
+          <div class="meta">${m.period} · ${m.evidence_required}</div>
+          <div class="deadline">Deadline: ${m.deadline}</div>
+          ${statusTag(m.status)}
+        </div>
+      </div>`;
+  });
+  document.getElementById('timelineDashboard').innerHTML = html;
+}
+
+// =========== MILESTONES ===========
+function renderMilestones() {
+  let html = '';
+  data.milestones.forEach(m => {
+    const dotClass = m.status === 'completed' ? 'completed' : m.status === 'in_progress' ? 'in-progress' : 'not-started';
+    html += `
+      <div class="timeline-item" onclick="showMilestoneModal('${m.id}')">
+        <div class="timeline-dot ${dotClass}">
+          ${m.status === 'completed' ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>' : ''}
+        </div>
+        <div class="timeline-content">
+          <h3>${m.skill_target}</h3>
+          <div class="meta">${m.period} · ${m.evidence_required}</div>
+          <div class="deadline">Deadline: ${m.deadline}</div>
+          <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
+            ${statusTag(m.status)}
+            <select class="status-select" onchange="updateMilestoneStatus('${m.id}', this.value)" onclick="event.stopPropagation()">
+              <option value="not_started" ${m.status==='not_started'?'selected':''}>Not Started</option>
+              <option value="in_progress" ${m.status==='in_progress'?'selected':''}>In Progress</option>
+              <option value="completed" ${m.status==='completed'?'selected':''}>Completed</option>
+            </select>
+          </div>
+        </div>
+      </div>`;
+  });
+  document.getElementById('timelineMilestones').innerHTML = html;
+  
+  // Quick notes
+  renderQuickNotes();
+}
+
+function updateMilestoneStatus(id, status) {
+  const m = data.milestones.find(x => x.id === id);
+  if (m) {
+    m.status = status;
+    data.last_updated = new Date().toISOString().slice(0,10);
+    saveData();
+    renderMilestones();
+    showToast(`<strong>Milestone ${id}</strong> → ${statusLabel(status)}`, 'success');
+  }
+}
+
+function showMilestoneModal(id) {
+  const m = data.milestones.find(x => x.id === id);
+  if (!m) return;
+  document.getElementById('modalTitle').textContent = m.skill_target;
+  document.getElementById('modalBody').innerHTML = `
+    <div style="margin-bottom:12px">
+      <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:4px">Periode</div>
+      <div style="font-size:15px;font-weight:500">${m.period}</div>
+    </div>
+    <div style="margin-bottom:12px">
+      <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:4px">Bukti Kompetensi</div>
+      <div style="font-size:15px;font-weight:500">${m.evidence_required}</div>
+    </div>
+    <div style="margin-bottom:12px">
+      <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:4px">Deadline</div>
+      <div style="font-size:15px;font-weight:500">${m.deadline}</div>
+    </div>
+    <div style="margin-bottom:12px">
+      <div style="font-size:13px;color:var(--text-tertiary);margin-bottom:4px">Status</div>
+      <select class="status-select" onchange="updateMilestoneStatus('${m.id}', this.value)">
+        <option value="not_started" ${m.status==='not_started'?'selected':''}>Not Started</option>
+        <option value="in_progress" ${m.status==='in_progress'?'selected':''}>In Progress</option>
+        <option value="completed" ${m.status==='completed'?'selected':''}>Completed</option>
+      </select>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function renderQuickNotes() {
+  const list = data.quick_notes || [];
+  const el = document.getElementById('quickNotes');
+  if (list.length === 0) {
+    el.innerHTML = '<div style="font-size:13px;color:var(--text-quaternary);padding:8px 0">Belum ada catatan cepat.</div>';
+    return;
+  }
+  el.innerHTML = list.map((n, i) => `
+    <div style="display:flex;align-items:flex-start;gap:8px;background:rgba(255,255,255,0.02);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:10px 14px">
+      <span style="color:var(--text-secondary);font-size:13px;flex:1">${n.text}</span>
+      <span style="font-size:11px;color:var(--text-quaternary);white-space:nowrap">${n.date}</span>
+      <button onclick="removeQuickNote(${i})" style="background:none;border:none;color:var(--text-quaternary);cursor:pointer;font-size:14px;padding:0 4px">&times;</button>
+    </div>
+  `).join('');
+}
+
+function addNote() {
+  const input = document.getElementById('noteInput');
+  const text = input.value.trim();
+  if (!text) return;
+  if (!data.quick_notes) data.quick_notes = [];
+  data.quick_notes.unshift({ text, date: new Date().toISOString().slice(0,10) });
+  data.last_updated = new Date().toISOString().slice(0,10);
+  saveData();
+  input.value = '';
+  renderQuickNotes();
+  showToast('Catatan ditambahkan', 'success');
+}
+
+function removeQuickNote(index) {
+  data.quick_notes.splice(index, 1);
+  saveData();
+  renderQuickNotes();
+}
+
+// =========== ROADMAP ===========
+function renderRoadmap() {
+  const roadmap = data.notes[0]?.content || [];
+  const tbody = document.getElementById('roadmapBody');
+  tbody.innerHTML = roadmap.map((c, i) => `
+    <tr>
+      <td class="comp-name">${c.kompetensi}</td>
+      <td>${c.level}</td>
+      <td>${c.target}</td>
+      <td class="sumber">${c.sumber}</td>
+      <td>${c.estimasi}</td>
+      <td>
+        <span class="status-badge ${c.status}" onclick="cycleRoadmapStatus(${i})" style="cursor:pointer">
+          ${statusLabel(c.status)}
+        </span>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function cycleRoadmapStatus(index) {
+  const roadmap = data.notes[0]?.content || [];
+  if (!roadmap[index]) return;
+  const order = ['not_started', 'in_progress', 'completed'];
+  const cur = roadmap[index].status;
+  const next = order[(order.indexOf(cur) + 1) % order.length];
+  roadmap[index].status = next;
+  data.last_updated = new Date().toISOString().slice(0,10);
+  saveData();
+  renderRoadmap();
+  renderDashboard();
+  renderProgress();
+  showToast(`<strong>${roadmap[index].kompetensi}</strong> → ${statusLabel(next)}`, 
+    next === 'completed' ? 'success' : 'warning');
+}
+
+function cycleStatus(el) {
+  const order = ['not_started', 'in_progress', 'completed'];
+  const cur = el.dataset.status;
+  const next = order[(order.indexOf(cur) + 1) % order.length];
+  // Find which competency this belongs to via the table row
+  const row = el.closest('tr');
+  if (row) {
+    const idx = Array.from(row.parentElement.children).indexOf(row);
+    const roadmap = data.notes[0]?.content || [];
+    if (roadmap[idx]) {
+      roadmap[idx].status = next;
+      data.last_updated = new Date().toISOString().slice(0,10);
+      saveData();
+      renderRoadmap();
+      renderDashboard();
+      renderProgress();
+      showToast(`<strong>${roadmap[idx].kompetensi}</strong> → ${statusLabel(next)}`,
+        next === 'completed' ? 'success' : 'warning');
+    }
+  }
+}
+
+// =========== PROGRESS ===========
+function renderProgress() {
+  const roadmap = data.notes[0]?.content || [];
+  const total = roadmap.length;
+  const completed = roadmap.filter(c => c.status === 'completed').length;
+  const inProgress = roadmap.filter(c => c.status === 'in_progress').length;
+  const notStarted = total - completed - inProgress;
+  const pct = total > 0 ? Math.round(completed/total*100) : 0;
+
+  document.getElementById('progressSummary').textContent = `${pct}% selesai`;
+
+  // Donut chart
+  const circumference = 2 * Math.PI * 72; // r=72 → ~452
+  const completedOffset = completed/total * circumference;
+  const inProgressOffset = inProgress/total * circumference;
+  document.getElementById('donutCompleted').setAttribute('stroke-dasharray', `${completedOffset} ${circumference - completedOffset}`);
+  document.getElementById('donutInProgress').setAttribute('stroke-dasharray', `${inProgressOffset} ${circumference - inProgressOffset}`);
+  document.getElementById('donutText').textContent = `${pct}%`;
+  document.getElementById('legendCompleted').textContent = completed;
+  document.getElementById('legendInProgress').textContent = inProgress;
+  document.getElementById('legendNotStarted').textContent = notStarted;
+
+  // Per-competency bars
+  const container = document.getElementById('progressBars');
+  container.innerHTML = roadmap.map((c, i) => {
+    let pctItem = 0;
+    let color = 'var(--text-quaternary)';
+    if (c.status === 'completed') { pctItem = 100; color = 'var(--success)'; }
+    else if (c.status === 'in_progress') { pctItem = 50; color = 'var(--accent-bright)'; }
+    
+    return `
+      <div style="margin-bottom:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+          <span style="font-size:13px;font-weight:500;color:var(--text-primary)">${c.kompetensi}</span>
+          <span style="font-size:12px;color:${color}">${statusLabel(c.status)}</span>
+        </div>
+        <div style="width:100%;height:8px;background:rgba(255,255,255,0.05);border-radius:9999px;overflow:hidden">
+          <div style="height:100%;border-radius:9999px;background:${color};width:${pctItem}%;transition:width 0.6s ease"></div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// =========== NOTES ===========
+function renderNotes() {
+  document.getElementById('notesCount').textContent = `${data.notes.length} catatan`;
+  const container = document.getElementById('notesList');
+  if (data.notes.length === 0) {
+    container.innerHTML = '<div style="font-size:13px;color:var(--text-quaternary);padding:16px 0">Belum ada catatan.</div>';
+    return;
+  }
+  container.innerHTML = data.notes.map(n => {
+    let body = '';
+    if (n.type === 'roadmap' && Array.isArray(n.content)) {
+      const c = n.content;
+      const done = c.filter(x => x.status === 'completed').length;
+      body = `<div style="font-size:13px;color:var(--text-secondary)">${c.length} kompetensi terdaftar · ${done} selesai · ${c.filter(x => x.status === 'in_progress').length} in progress</div>`;
+    } else if (typeof n.content === 'string') {
+      body = `<div style="font-size:13px;color:var(--text-secondary)">${n.content}</div>`;
+    } else {
+      body = `<div style="font-size:13px;color:var(--text-secondary)">${JSON.stringify(n.content).slice(0,200)}</div>`;
+    }
+    return `
+      <div class="note-item">
+        <div class="note-title">${n.title || 'Catatan'}</div>
+        <div class="note-date">${n.date || '—'}</div>
+        ${body}
+      </div>
+    `;
+  }).join('');
+}
+
+// =========== INIT ===========
+renderDashboard();
+
+// Handle hash on load
+const hash = window.location.hash.replace('#','');
+if (hash && ['dashboard','milestones','roadmap','progress','training','notes'].includes(hash)) {
+  switchTab(hash);
+}
+</script>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <h3 id="modalTitle"></h3>
+    <div id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Tutup</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
