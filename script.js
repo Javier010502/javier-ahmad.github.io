@@ -17,6 +17,22 @@ document.addEventListener('DOMContentLoaded', () => {
     a.addEventListener('click', () => links.classList.remove('open'))
   );
 
+  // Smooth scroll with nav offset
+  const navHeight = () => nav.getBoundingClientRect().height;
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        e.preventDefault();
+        const offset = navHeight();
+        const targetPos = target.getBoundingClientRect().top + window.scrollY - offset - 8;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+      }
+    });
+  });
+
   // Scroll reveal with IntersectionObserver
   const reveals = document.querySelectorAll('.rv');
   if ('IntersectionObserver' in window) {
