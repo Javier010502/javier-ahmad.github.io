@@ -1,368 +1,392 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Javier Ahmad — Engineering Physics Portfolio</title>
-    <meta name="description" content="Portfolio Javier Ahmad — Instrumentation & Control Engineer, lulusan Engineering Physics UGM. Pengalaman di SKK MIGAS, Pertamina RU VI, dan PT Daun Biru Engineering.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <noscript><style>.reveal{opacity:1!important;transform:none!important}.nav-links{max-height:none!important}</style></noscript>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javier Ahmad — Instrumentation & Control Engineer</title>
+  <meta name="description" content="Javier Ahmad · Engineering Physics UGM. SKK MIGAS, Pertamina RU VI, PT Daun Biru Engineering. Instrumentation, SCADA, PLC, custody transfer metering.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="nav" id="nav">
-        <div class="container nav-inner">
-            <a href="#home" class="logo">JA<span class="dot">.</span></a>
-            <button class="nav-toggle" id="navToggle" aria-label="Buka menu">
-                <span></span><span></span><span></span>
-            </button>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#learning">Learning</a></li>
-                <li><a href="#achievements">Awards</a></li>
-                <li><a href="#evidence">Evidence</a></li>
-                <li><a href="#contact" class="nav-cta">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero -->
-    <header class="hero" id="home">
-        <div class="container hero-inner">
-            <div class="hero-text">
-                <p class="hero-eyebrow reveal">Engineering Physics · UGM '24</p>
-                <h1 class="hero-title reveal">Javier Ahmad</h1>
-                <p class="hero-sub reveal">Instrumentation &amp; Control Engineer yang membangun sistem monitoring industri — dari PLC &amp; SCADA hingga custody transfer metering di hulu migas.</p>
-                <div class="hero-actions reveal">
-                    <a href="#projects" class="btn btn-primary">View My Work</a>
-                    <a href="Javier_Ahmad_CV.pdf" class="btn btn-ghost" download>Download CV</a>
-                </div>
-                <div class="hero-meta reveal">
-                    <a href="https://www.linkedin.com/in/javier-ahmad-0427821b7/" target="_blank" rel="noopener">LinkedIn</a>
-                    <span class="sep">·</span>
-                    <span>javier.ahmad@outlook.co.id</span>
-                    <span class="sep">·</span>
-                    <span>Indonesia</span>
-                </div>
-            </div>
-            <div class="hero-visual reveal">
-                <div class="orb"></div>
-                <div class="hero-badge">
-                    <span class="big">3.35</span>
-                    <span class="small">GPA / 4.00</span>
-                </div>
-            </div>
-        </div>
-    </header>
+<nav class="nv" id="nv">
+  <div class="nv-inner">
+    <a href="#home" class="nv-logo">JA<span class="nv-dot">/</span>eng</a>
+    <button class="nv-toggle" id="nvToggle" aria-label="Menu"><span></span><span></span></button>
+    <ul class="nv-links" id="nvLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Stack</a></li>
+      <li><a href="#evidence">Field</a></li>
+      <li><a href="#contact" class="nv-cta">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <!-- About -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <h2 class="section-title">Tentang Saya</h2>
-                    <p>Saya adalah fresh graduate <strong>Engineering Physics</strong> dari Universitas Gadjah Mada (GPA 3.35) dengan pengalaman lapangan di <strong>SKK MIGAS</strong>, <strong>PT Pertamina RU VI Balongan</strong>, dan <strong>PT Daun Biru Engineering</strong>.</p>
-                    <p>Fokus saya ada di instrumentation &amp; control: memimpin eksekusi lapangan proyek instrumentasi-listrik, mengonfigurasi sistem monitoring online (MONITA), dan troubleshooting振动 monitoring berbasis <strong>Allen Bradley PLC</strong> untuk proyek 650MW Muara Tawar.</p>
-                    <p>Saya menghargai kerja tim, komunikasi yang jelas, serta menjunjung profesionalisme dan integritas dalam setiap pekerjaan.</p>
-                </div>
-                <ul class="about-facts reveal">
-                    <li><span class="fact-num">3+</span><span class="fact-label">Pengalaman profesional (internship &amp; kontrak)</span></li>
-                    <li><span class="fact-num">106</span><span class="fact-label">Kontraktor migas dipantau saat di SKK MIGAS</span></li>
-                    <li><span class="fact-num">6.5k</span><span class="fact-label">BOPD dipulihkan di PT Bumi Siak Pusako</span></li>
-                    <li><span class="fact-num">3</span><span class="fact-label">Kompetisi nasional &amp; PIMNAS</span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience -->
-    <section class="section section-alt" id="experience">
-        <div class="container">
-            <h2 class="section-title reveal">Work &amp; Internship</h2>
-            <div class="timeline">
-                <div class="timeline-item reveal">
-                    <div class="timeline-year">Feb 2025 — Present</div>
-                    <div class="timeline-body">
-                        <h3>Engineer / Contract</h3>
-                        <p class="timeline-org">PT Daun Biru Engineering — Depok, Jawa Barat</p>
-                        <a href="#evidence" class="tl-thumb"><img src="assets/photos/04.jpg" alt="MONITA PT DBE / ITB" loading="lazy"></a>
-                        <ul>
-                            <li>Memimpin eksekusi lapangan proyek instrumentation &amp; electrical dengan fokus efisiensi dan keselamatan.</li>
-                            <li>Project Manager untuk <em>Furnace Monitoring System</em> di lab Kimia ITB.</li>
-                            <li>Troubleshoot <em>Vibration Monitoring System</em> (Allen Bradley PLC) proyek 650MW Muara Tawar.</li>
-                            <li>PIC konfigurasi &amp; instalasi <strong>MONITA</strong> (Online Monitoring System PT DBE).</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-year">Mar 2024 — Aug 2024</div>
-                    <div class="timeline-body">
-                        <h3>Internship — Distribution &amp; Lifting Dept.</h3>
-                        <p class="timeline-org">SKK MIGAS — Jakarta</p>
-                        <a href="#evidence" class="tl-thumb"><img src="assets/photos/06.jpg" alt="Vibration Monitoring PLC" loading="lazy"></a>
-                        <ul>
-                            <li>Mempelajari industri hulu migas: sistem PSC, custody transfer metering, koordinasi proyek.</li>
-                            <li>Evaluasi update persyaratan teknis alat ukur custody transfer (crude/GL meter, prover, dll).</li>
-                            <li>Monitoring &amp; troubleshooting PT Bumi Siak Pusako — bantu pulihkan produksi 2–3k → 6.5k+ BOPD.</li>
-                            <li>Tim custody transfer: pantau penjualan migas 106 kontraktor KKKS.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-year">Jan 2023 — Feb 2023</div>
-                    <div class="timeline-body">
-                        <h3>Electrical &amp; Instrumentation Engineer / Internship</h3>
-                        <p class="timeline-org">PT Pertamina RU VI Balongan — Indramayu, Jawa Barat</p>
-                        <a href="#evidence" class="tl-thumb"><img src="assets/photos/02.jpg" alt="Pertamina RU VI" loading="lazy"></a>
-                        <ul>
-                            <li>Studi instrumentasi &amp; control migas: PFD, P&amp;ID, PLC, DCS, flow/level/temp/pressure instruments.</li>
-                            <li>Identifikasi 10 P&amp;ID UNIT 32-F-104 Debutanizer Reboiler Heater &amp; 3 node HAZOP.</li>
-                            <li>Eksposur operasi refinery &amp; protokol keselamatan RU VI Balongan.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects -->
-    <section class="section" id="projects">
-        <div class="container">
-            <h2 class="section-title reveal">Featured Projects</h2>
-            <div class="projects-grid">
-                <article class="project-card reveal project-featured">
-                    <div class="project-tag">IoT · Sensors</div>
-                    <h3>CAPTURE</h3>
-                    <p>Real-time monitoring teknologi Carbon Capture terintegrasi smart sensors. Mengembangkan & mengkodekan instrumen sensor untuk pengumpulan data langsung.</p>
-                    <p class="project-meta">PKM Incentive · Kemedikbud 2023</p>
-                </article>
-                <article class="project-card reveal">
-                    <div class="project-tag">Engineering Design</div>
-                    <h3>Distillation Column System</h3>
-                    <p>Desain rekayasa kolom distilasi (E-201, D-103, F-101): P&ID, Instrument Index, I/O List, Cable Block, JB Wiring, Loop Drawing, Datasheet & Control Narrative.</p>
-                    <p class="project-meta">Instrumentation & Control · 2023</p>
-                </article>
-                <article class="project-card reveal">
-                    <div class="project-tag">Automation · IoT</div>
-                    <h3>Mini Smart Tourism Area</h3>
-                    <p>Desain SPBU cerdas: layout & struktur AutoCAD, pemrograman Arduino, dan sistem wiring kelistrikan aman untuk model pariwisata berbasis IoT.</p>
-                    <p class="project-meta">2023</p>
-                </article>
-                <article class="project-card reveal">
-                    <div class="project-tag">Sustainability</div>
-                    <h3>Nearly Zero Energy Building</h3>
-                    <p>Proposal IKN dengan integrasi Microbial Fuel Cell & Smart Windows berbasis material lokal untuk konsumsi energi mendekati nol.</p>
-                    <p class="project-meta">PIMNAS · Kemedikbud 2022</p>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills -->
-    <section class="section section-alt" id="skills">
-        <div class="container">
-            <h2 class="section-title reveal">Skills & Tools</h2>
-            <div class="skills-grid">
-                <div class="skill-group reveal">
-                    <h3>Hard Skills</h3>
-                    <div class="chips">
-                        <span class="chip">AutoCAD</span>
-                        <span class="chip">PLC Allen Bradley</span>
-                        <span class="chip">PLC Siemens</span>
-                        <span class="chip">SCADA</span>
-                        <span class="chip">P&amp;ID</span>
-                        <span class="chip">Data Analysis</span>
-                        <span class="chip">Python</span>
-                        <span class="chip">MS Office</span>
-                    </div>
-                </div>
-                <div class="skill-group reveal">
-                    <h3>Soft Skills</h3>
-                    <div class="chips">
-                        <span class="chip">Teamwork</span>
-                        <span class="chip">Problem Solving</span>
-                        <span class="chip">Communication</span>
-                        <span class="chip">Time Management</span>
-                        <span class="chip">Adaptability</span>
-                        <span class="chip">Critical Thinking</span>
-                        <span class="chip">Leadership</span>
-                        <span class="chip">Creativity</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Learning & Certification -->
-    <section class="section" id="learning">
-        <div class="container">
-            <h2 class="section-title reveal">Preparation Track</h2>
-            <div class="learning-grid">
-                <div class="learning-card reveal">
-                    <div class="lc-header">
-                        <div class="lc-icon lc-icon-plc">PLC</div>
-                        <div class="lc-info">
-                            <h3>Master PLC Programming</h3>
-                            <p class="lc-source">Alison · CPD Certificate</p>
-                        </div>
-                        <span class="lc-badge">0%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress-fill" data-progress="5" style="width:5%"></div></div>
-                    <ul class="lc-milestones">
-                        <li class="done">✅ Enrolled &amp; scheduled</li>
-                        <li class="todo">⬜ Module 1 — Intro &amp; PLC Architecture</li>
-                        <li class="todo">⬜ Module 2 — Ladder Logic Fundamentals</li>
-                        <li class="todo">⬜ Module 3 — Timers, Counters &amp; Comparators</li>
-                        <li class="todo">⬜ Module 4 — Advanced Instructions</li>
-                        <li class="todo">⬜ Final Exam &amp; Certificate</li>
-                    </ul>
-                </div>
-                <div class="learning-card reveal">
-                    <div class="lc-header">
-                        <div class="lc-icon lc-icon-cert">Cert</div>
-                        <div class="lc-info">
-                            <h3>PLC Free Certificate</h3>
-                            <p class="lc-source">Itronix Solutions · MCQ Quiz</p>
-                        </div>
-                        <span class="lc-badge">0%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress-fill" data-progress="0" style="width:0%"></div></div>
-                    <ul class="lc-milestones">
-                        <li class="todo">⬜ Ambil quiz PLC Programmer Certification</li>
-                        <li class="todo">⬜ Dapatkan sertifikat verified</li>
-                    </ul>
-                </div>
-                <div class="learning-card reveal">
-                    <div class="lc-header">
-                        <div class="lc-icon lc-icon-sim">Sim</div>
-                        <div class="lc-info">
-                            <h3>PLC Simulation Practice</h3>
-                            <p class="lc-source">PLC Academy · OpenPLC</p>
-                        </div>
-                        <span class="lc-badge">0%</span>
-                    </div>
-                    <div class="progress-bar"><div class="progress-fill" data-progress="0" style="width:0%"></div></div>
-                    <ul class="lc-milestones">
-                        <li class="todo">⬜ Install OpenPLC / simulator</li>
-                        <li class="todo">⬜ Praktik ladder logic sederhana</li>
-                        <li class="todo">⬜ Timer &amp; Counter simulation</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achievements -->
-    <section class="section" id="achievements">
-        <div class="container">
-            <h2 class="section-title reveal">Achievements</h2>
-            <div class="ach-grid">
-                <div class="ach-card reveal">
-                    <span class="ach-year">2022</span>
-                    <h3>1st Place — Olgenas Paper Competition</h3>
-                    <p>Utilisasi Syngas dalam Integrated Solar Combined Cycle di lahan bekas tambang Kalimantan.</p>
-                </div>
-                <div class="ach-card reveal">
-                    <span class="ach-year">2022</span>
-                    <h3>PIMNAS — Student Creativity Week</h3>
-                    <p>Nearly Zero Energy Building IKN dengan Microbial Fuel Cell &amp; Smart Windows.</p>
-                </div>
-                <div class="ach-card reveal">
-                    <span class="ach-year">2021</span>
-                    <h3>2nd Place — Evergreen Essay Competition</h3>
-                    <p>Esai "Biodegradable Masks" — Fakultas Kesehatan Masyarakat UI.</p>
-                </div>
-                <div class="ach-card reveal">
-                    <span class="ach-year">2021</span>
-                    <h3>Outstanding Student</h3>
-                    <p>Program Engineering Physics, Universitas Gadjah Mada.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Field Evidence -->
-    <section class="section" id="evidence">
-        <div class="container">
-            <h2 class="section-title reveal">Bukti Pengalaman Kerja</h2>
-            <div class="filter-bar reveal">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="field">Field Work</button>
-                <button class="filter-btn" data-filter="monitoring">Monitoring &amp; SCADA</button>
-            </div>
-            <div class="gallery-grid" id="gallery">
-                <figure class="gallery-item reveal" data-cat="field">
-                    <img src="assets/photos/01.jpg" alt="Motor IE3 Muara Tawar" loading="lazy">
-                    <figcaption>High-Efficiency Motor (IE3) — 650MW Muara Tawar Plant</figcaption>
-                </figure>
-                <figure class="gallery-item reveal" data-cat="monitoring">
-                    <img src="assets/photos/02.jpg" alt="Panel azbil Pertamina RU VI" loading="lazy">
-                    <figcaption>Local Indicator Cabinet (azbil) — Pertamina RU VI Balongan</figcaption>
-                </figure>
-                <figure class="gallery-item reveal" data-cat="field">
-                    <img src="assets/photos/03.jpg" alt="Generator ComAp Selayar" loading="lazy">
-                    <figcaption>Generator Control Panel (ComAp) — Selayar, Sulawesi Selatan</figcaption>
-                </figure>
-                <figure class="gallery-item reveal" data-cat="monitoring">
-                    <img src="assets/photos/04.jpg" alt="Panel Monitoring ITB" loading="lazy">
-                    <figcaption>Monitoring & Machine C/P (azbil) — Furnace Monitoring ITB</figcaption>
-                </figure>
-                <figure class="gallery-item reveal" data-cat="field">
-                    <img src="assets/photos/05.jpg" alt="Relay panel Muara Tawar" loading="lazy">
-                    <figcaption>Protection Relay Panel — PLTGU Muara Tawar, Bekasi</figcaption>
-                </figure>
-                <figure class="gallery-item reveal" data-cat="field">
-                    <img src="assets/photos/06.jpg" alt="PLC rack Muara Tawar" loading="lazy">
-                    <figcaption>PLC Rack (ABB) & I/O Modules — PLTGU Muara Tawar</figcaption>
-                </figure>
-                <figure class="gallery-item reveal" data-cat="field">
-                    <img src="assets/photos/07.jpg" alt="Electrical cabinet Bandung" loading="lazy">
-                    <figcaption>Electrical Control Cabinet — Pilot Plant Bandung</figcaption>
-                </figure>
-                <figure class="gallery-item reveal" data-cat="monitoring">
-                    <img src="assets/photos/08.jpg" alt="Data log GAA Bengkalis" loading="lazy">
-                    <figcaption>Data Log & Trend Display — Unit Produksi Bensin Sawit (Bandung)</figcaption>
-                </figure>
-                <figure class="gallery-item reveal" data-cat="monitoring">
-                    <img src="assets/photos/09.jpg" alt="MONITA reactor ITB" loading="lazy">
-                    <figcaption>MONITA — Monitoring Temperatur Reactor (G4T Reactor)</figcaption>
-                </figure>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-        <button class="lightbox-close" id="lbClose" aria-label="Tutup">&times;</button>
-        <img id="lbImg" src="" alt="">
-        <p id="lbCap"></p>
+<header class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-main">
+      <p class="hero-meta rv"><span class="hero-role">Instrumentation & Control Engineer</span><span class="hero-sep">/</span><span class="hero-edu">Engineering Physics · UGM '24</span></p>
+      <h1 class="hero-title rv">Javier<br>Ahmad</h1>
+      <p class="hero-sub rv">Saya membangun sistem monitoring industri — dari konfigurasi PLC & SCADA di lapangan, troubleshooting vibration monitoring 650MW, hingga custody transfer metering di hulu migas.</p>
+      <div class="hero-actions rv">
+        <a href="#projects" class="btn btn-primary">Lihat Proyek</a>
+        <a href="Javier_Ahmad_CV.pdf" class="btn btn-ghost" download>Download CV</a>
+      </div>
     </div>
-
-    <!-- Contact -->
-    <section class="section section-contact" id="contact">
-        <div class="container contact-inner">
-            <h2 class="section-title reveal">Let's Work Together</h2>
-            <p class="reveal">Tertarik kolaborasi di bidang instrumentation, control, atau automation? Hubungi saya.</p>
-            <div class="contact-links reveal">
-                <a href="mailto:javier.ahmad@outlook.co.id" class="btn btn-primary">javier.ahmad@outlook.co.id</a>
-                <a href="https://www.linkedin.com/in/javier-ahmad-0427821b7/" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
-                <a href="Javier_Ahmad_CV.pdf" class="btn btn-ghost" download>Download CV</a>
-            </div>
+    <div class="hero-data rv">
+      <div class="data-panel">
+        <div class="data-row">
+          <span class="data-label">GPA</span>
+          <span class="data-val">3.35<span class="data-unit">/4.00</span></span>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>© <span id="year"></span> Javier Ahmad. Built with care.</p>
+        <div class="data-row">
+          <span class="data-label">Pengalaman</span>
+          <span class="data-val">3+<span class="data-unit">tahun</span></span>
         </div>
-    </footer>
+        <div class="data-row">
+          <span class="data-label">Kontraktor</span>
+          <span class="data-val">106<span class="data-unit">KKKS</span></span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Produksi</span>
+          <span class="data-val">6.5k<span class="data-unit">BOPD</span></span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Kompetisi</span>
+          <span class="data-val">3<span class="data-unit">nasional</span></span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Kompetisi</span>
+          <span class="data-val">3<span class="data-unit">nasional</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-bg-grid"></div>
+</header>
 
-    <script src="script.js"></script>
+<section class="sec sec-about" id="about">
+  <div class="sec-inner">
+    <div class="about-text-wrap rv">
+      <h2 class="sec-title">Saya adalah <span class="hl">engineering physicist</span> yang bekerja di instrumentation & control</h2>
+      <div class="about-body">
+        <p>Fresh graduate Engineering Physics UGM (GPA 3.35) dengan pengalaman lapangan langsung di SKK MIGAS, PT Pertamina RU VI Balongan, dan PT Daun Biru Engineering.</p>
+        <p>Saya memimpin eksekusi proyek instrumentasi-listrik, mengonfigurasi sistem monitoring online (MONITA) di pembangkit dan kilang, serta melakukan troubleshooting vibration monitoring berbasis Allen Bradley PLC untuk proyek 650MW Muara Tawar.</p>
+        <p>Pendekatan saya: kerja tim yang solid, komunikasi teknis yang jelas, dan komitmen pada profesionalisme.</p>
+      </div>
+      <div class="about-links">
+        <a href="https://www.linkedin.com/in/javier-ahmad-0427821b7/" target="_blank" rel="noopener">LinkedIn</a>
+        <span class="link-sep">/</span>
+        <a href="mailto:javier.ahmad@outlook.co.id">javier.ahmad@outlook.co.id</a>
+        <span class="link-sep">/</span>
+        <span class="about-loc">Indonesia</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-exp" id="experience">
+  <div class="sec-inner">
+    <div class="exp-grid">
+      <div class="exp-item rv">
+        <div class="exp-year">2025</div>
+        <div class="exp-body">
+          <h3>Engineer / Contract <span class="exp-org">— PT Daun Biru Engineering, Depok</span></h3>
+          <ul class="exp-detail">
+            <li>Memimpin eksekusi lapangan proyek instrumentation & electrical — efisiensi dan keselamatan jadi prioritas utama.</li>
+            <li>Project Manager Furnace Monitoring System laboratorium Kimia ITB.</li>
+            <li>Troubleshoot Vibration Monitoring System (Allen Bradley PLC) proyek PLTGU 650MW Muara Tawar.</li>
+            <li>PIC konfigurasi & instalasi MONITA — Online Monitoring System PT DBE.</li>
+          </ul>
+          <aside class="exp-tags">
+            <span class="exp-tag">PLC</span>
+            <span class="exp-tag">SCADA</span>
+            <span class="exp-tag">MONITA</span>
+            <span class="exp-tag">Vibration</span>
+          </aside>
+        </div>
+      </div>
+      <div class="exp-item rv">
+        <div class="exp-year">2024</div>
+        <div class="exp-body">
+          <h3>Intern — Distribution & Lifting <span class="exp-org">— SKK MIGAS, Jakarta</span></h3>
+          <ul class="exp-detail">
+            <li>Mempelajari industri hulu migas: sistem PSC, custody transfer metering, koordinasi proyek.</li>
+            <li>Evaluasi persyaratan teknis alat ukur custody transfer (crude/GL meter, prover, dll).</li>
+            <li>Monitoring & troubleshooting PT Bumi Siak Pusako — bantu pemulihan 2-3k ke 6.5k+ BOPD.</li>
+            <li>Tim custody transfer: pantau penjualan migas 106 kontraktor KKKS.</li>
+          </ul>
+          <aside class="exp-tags">
+            <span class="exp-tag">Custody Transfer</span>
+            <span class="exp-tag">Metering</span>
+            <span class="exp-tag">PSC</span>
+            <span class="exp-tag">KKKS</span>
+          </aside>
+        </div>
+      </div>
+      <div class="exp-item rv">
+        <div class="exp-year">2023</div>
+        <div class="exp-body">
+          <h3>E&I Engineer Intern <span class="exp-org">— PT Pertamina RU VI Balongan, Indramayu</span></h3>
+          <ul class="exp-detail">
+            <li>Studi instrumentasi & control migas: PFD, P&ID, PLC, DCS, flow/level/temp/pressure instruments.</li>
+            <li>Identifikasi 10 P&ID UNIT 32-F-104 Debutanizer Reboiler Heater & 3 node HAZOP.</li>
+            <li>Eksposur langsung operasi refinery dan protokol keselamatan RU VI Balongan.</li>
+          </ul>
+          <aside class="exp-tags">
+            <span class="exp-tag">P&ID</span>
+            <span class="exp-tag">HAZOP</span>
+            <span class="exp-tag">DCS</span>
+            <span class="exp-tag">Refinery</span>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-projects" id="projects">
+  <div class="sec-inner">
+    <header class="sec-header rv">
+      <h2 class="sec-title">Featured <span class="hl">Projects</span></h2>
+      <p class="sec-desc">Proyek-proyek yang mencakup IoT, kontrol proses, dan energi berkelanjutan.</p>
+    </header>
+    <div class="proj-grid">
+      <article class="proj-card proj-featured rv">
+        <div class="proj-num">01</div>
+        <h3 class="proj-title">CAPTURE</h3>
+        <p class="proj-cat">IoT · Sensors</p>
+        <p class="proj-desc">Real-time monitoring Carbon Capture terintegrasi smart sensors. Mengembangkan dan mengkodekan instrumen sensor untuk pengumpulan data langsung.</p>
+        <span class="proj-meta">PKM Incentive · Kemedikbud 2023</span>
+      </article>
+      <article class="proj-card rv">
+        <div class="proj-num">02</div>
+        <h3 class="proj-title">Distillation Column System</h3>
+        <p class="proj-cat">Engineering Design</p>
+        <p class="proj-desc">P&ID, Instrument Index, I/O List, Cable Block, JB Wiring, Loop Drawing, Datasheet & Control Narrative.</p>
+        <span class="proj-meta">Instrumentation & Control · 2023</span>
+      </article>
+      <article class="proj-card rv">
+        <div class="proj-num">03</div>
+        <h3 class="proj-title">Mini Smart Tourism Area</h3>
+        <p class="proj-cat">Automation · IoT</p>
+        <p class="proj-desc">Desain SPBU cerdas: AutoCAD layout, Arduino programming, dan sistem wiring kelistrikan untuk pariwisata IoT.</p>
+        <span class="proj-meta">2023</span>
+      </article>
+      <article class="proj-card rv">
+        <div class="proj-num">04</div>
+        <h3 class="proj-title">Nearly Zero Energy Building</h3>
+        <p class="proj-cat">Sustainability</p>
+        <p class="proj-desc">Proposal IKN dengan Microbial Fuel Cell & Smart Windows berbasis material lokal — konsumsi energi mendekati nol.</p>
+        <span class="proj-meta">PIMNAS · Kemedikbud 2022</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-skills" id="skills">
+  <div class="sec-inner">
+    <div class="skills-grid">
+      <div class="skills-list rv">
+        <h3 class="skills-head">Technical Stack</h3>
+        <dl class="skills-spec">
+          <dt>Control Systems</dt>
+          <dd>PLC Allen Bradley</dd>
+          <dt>Control Systems</dt>
+          <dd>PLC Siemens</dd>
+          <dt>Control Systems</dt>
+          <dd>SCADA / HMI</dd>
+          <dt>Monitoring</dt>
+          <dd>MONITA, Vibration Analysis</dd>
+          <dt>Design</dt>
+          <dd>AutoCAD, P&amp;ID</dd>
+          <dt>Programming</dt>
+          <dd>Python, Ladder Logic</dd>
+          <dt>Analysis</dt>
+          <dd>Data Analysis, MS Office</dd>
+        </dl>
+      </div>
+      <div class="skills-list rv">
+        <h3 class="skills-head">Professional Skills</h3>
+        <dl class="skills-spec">
+          <dt>Teamwork</dt>
+          <dd>Kolaborasi lintas tim proyek EPC</dd>
+          <dt>Problem Solving</dt>
+          <dd>Troubleshooting sistem lapangan</dd>
+          <dt>Communication</dt>
+          <dd>Dokumentasi teknis & presentasi</dd>
+          <dt>Time Management</dt>
+          <dd>Manajemen proyek multi-deadline</dd>
+          <dt>Adaptability</dt>
+          <dd>Cepat belajar teknologi baru</dd>
+          <dt>Critical Thinking</dt>
+          <dd>Analisis akar masalah teknis</dd>
+          <dt>Leadership</dt>
+          <dd>PIC proyek & koordinasi tim</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-learning" id="learning">
+  <div class="sec-inner">
+    <header class="sec-header rv">
+      <h2 class="sec-title">Learning <span class="hl">Track</span></h2>
+      <p class="sec-desc">Sertifikasi dan kursus yang sedang dijalani untuk memperkuat kompetensi kontrol & instrumentasi.</p>
+    </header>
+    <div class="learn-stack">
+      <div class="learn-item rv">
+        <div class="learn-title-row">
+          <div class="learn-icon">PLC</div>
+          <div>
+            <h3>Master PLC Programming</h3>
+            <span class="learn-src">Alison — CPD Certificate</span>
+          </div>
+          <span class="learn-pct">5%</span>
+        </div>
+        <div class="learn-bar"><div class="learn-fill" style="width:5%"></div></div>
+        <div class="learn-miles">
+          <span class="learn-mile done">Enrolled & scheduled</span>
+          <span class="learn-mile todo">Module 1 — Intro & PLC Architecture</span>
+          <span class="learn-mile todo">Module 2 — Ladder Logic Fundamentals</span>
+          <span class="learn-mile todo">Module 3 — Timers, Counters & Comparators</span>
+          <span class="learn-mile todo">Module 4 — Advanced Instructions</span>
+          <span class="learn-mile todo">Final Exam & Certificate</span>
+        </div>
+      </div>
+      <div class="learn-item rv">
+        <div class="learn-title-row">
+          <div class="learn-icon">CERT</div>
+          <div>
+            <h3>PLC Free Certificate</h3>
+            <span class="learn-src">Itronix Solutions — MCQ Quiz</span>
+          </div>
+          <span class="learn-pct">0%</span>
+        </div>
+        <div class="learn-bar"><div class="learn-fill" style="width:0%"></div></div>
+        <div class="learn-miles">
+          <span class="learn-mile todo">Ambil quiz PLC Programmer Certification</span>
+          <span class="learn-mile todo">Dapatkan sertifikat verified</span>
+        </div>
+      </div>
+      <div class="learn-item rv">
+        <div class="learn-title-row">
+          <div class="learn-icon">SIM</div>
+          <div>
+            <h3>PLC Simulation Practice</h3>
+            <span class="learn-src">PLC Academy — OpenPLC</span>
+          </div>
+          <span class="learn-pct">0%</span>
+        </div>
+        <div class="learn-bar"><div class="learn-fill" style="width:0%"></div></div>
+        <div class="learn-miles">
+          <span class="learn-mile todo">Install OpenPLC / simulator</span>
+          <span class="learn-mile todo">Praktik ladder logic sederhana</span>
+          <span class="learn-mile todo">Timer & Counter simulation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec-achievements" id="achievements">
+  <div class="sec-inner">
+    <ul class="ach-list rv">
+      <li><span class="ach-year">2022</span> 1st Place — Olgenas Paper Competition. Utilisasi Syngas dalam Integrated Solar Combined Cycle di lahan bekas tambang Kalimantan.</li>
+      <li><span class="ach-year">2022</span> PIMNAS — Student Creativity Week. Nearly Zero Energy Building IKN dengan Microbial Fuel Cell & Smart Windows.</li>
+      <li><span class="ach-year">2021</span> 2nd Place — Evergreen Essay Competition. Esai Biodegradable Masks — FKM UI.</li>
+      <li><span class="ach-year">2021</span> Outstanding Student — Program Engineering Physics, Universitas Gadjah Mada.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec sec-evidence" id="evidence">
+  <div class="sec-inner">
+    <header class="sec-header rv">
+      <h2 class="sec-title">Field <span class="hl">Work</span></h2>
+      <p class="sec-desc">Dokumentasi langsung dari proyek-proyek instrumentation & kontrol di lapangan.</p>
+    </header>
+    <div class="gal-filter rv">
+      <button class="gal-btn active" data-filter="all">All</button>
+      <button class="gal-btn" data-filter="field">Field Work</button>
+      <button class="gal-btn" data-filter="monitoring">Monitoring & SCADA</button>
+    </div>
+    <div class="gal-grid" id="gal">
+      <figure class="gal-item rv" data-cat="field">
+        <img src="assets/photos/01.jpg" alt="Motor IE3 Muara Tawar" loading="lazy">
+        <figcaption>High-Efficiency Motor (IE3) — 650MW Muara Tawar Plant</figcaption>
+      </figure>
+      <figure class="gal-item rv" data-cat="monitoring">
+        <img src="assets/photos/02.jpg" alt="Panel azbil Pertamina RU VI" loading="lazy">
+        <figcaption>Local Indicator Cabinet (azbil) — Pertamina RU VI Balongan</figcaption>
+      </figure>
+      <figure class="gal-item rv" data-cat="field">
+        <img src="assets/photos/03.jpg" alt="Generator ComAp Selayar" loading="lazy">
+        <figcaption>Generator Control Panel (ComAp) — Selayar, Sulsel</figcaption>
+      </figure>
+      <figure class="gal-item rv" data-cat="monitoring">
+        <img src="assets/photos/04.jpg" alt="Panel Monitoring ITB" loading="lazy">
+        <figcaption>Monitoring & Machine C/P (azbil) — Furnace Monitoring ITB</figcaption>
+      </figure>
+      <figure class="gal-item rv" data-cat="field">
+        <img src="assets/photos/05.jpg" alt="Relay panel Muara Tawar" loading="lazy">
+        <figcaption>Protection Relay Panel — PLTGU Muara Tawar, Bekasi</figcaption>
+      </figure>
+      <figure class="gal-item rv" data-cat="field">
+        <img src="assets/photos/06.jpg" alt="PLC rack Muara Tawar" loading="lazy">
+        <figcaption>PLC Rack (ABB) & I/O Modules — PLTGU Muara Tawar</figcaption>
+      </figure>
+      <figure class="gal-item rv" data-cat="field">
+        <img src="assets/photos/07.jpg" alt="Electrical cabinet Bandung" loading="lazy">
+        <figcaption>Electrical Control Cabinet — Pilot Plant Bandung</figcaption>
+      </figure>
+      <figure class="gal-item rv" data-cat="monitoring">
+        <img src="assets/photos/08.jpg" alt="Data log GAA Bengkalis" loading="lazy">
+        <figcaption>Data Log & Trend Display — Unit Produksi Bensin Sawit, Bandung</figcaption>
+      </figure>
+      <figure class="gal-item rv" data-cat="monitoring">
+        <img src="assets/photos/09.jpg" alt="MONITA reactor ITB" loading="lazy">
+        <figcaption>MONITA — Monitoring Temperatur Reactor (G4T Reactor)</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose" aria-label="Tutup">&times;</button>
+  <img id="lbImg" src="" alt="">
+  <p id="lbCap"></p>
+</div>
+
+<footer class="ft" id="contact">
+  <div class="sec-inner">
+    <div class="ft-grid">
+      <div class="ft-left rv">
+        <h2 class="ft-title">Let's <span class="hl">connect</span></h2>
+        <p class="ft-sub">Butuh engineering instrumentation & control untuk proyek Anda? Hubungi saya.</p>
+      </div>
+      <div class="ft-right rv">
+        <a href="mailto:javier.ahmad@outlook.co.id" class="btn btn-primary">javier.ahmad@outlook.co.id</a>
+        <div class="ft-links">
+          <a href="https://www.linkedin.com/in/javier-ahmad-0427821b7/" target="_blank" rel="noopener">LinkedIn</a>
+          <span class="link-sep">/</span>
+          <a href="Javier_Ahmad_CV.pdf" download>Download CV</a>
+        </div>
+      </div>
+    </div>
+    <div class="ft-foot">
+      <p>&copy; <span id="year"></span> Javier Ahmad</p>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
