@@ -64,13 +64,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Lightbox
+  // Lightbox (kept for items that do NOT have a detail modal)
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   const lbCap = document.getElementById('lbCap');
   const lbClose = document.getElementById('lbClose');
   galleryItems.forEach(item => {
     item.addEventListener('click', () => {
+      // If this item has detailed modal data, open the field detail modal instead
+      if (item.dataset.desc || item.dataset.location || item.dataset.equipment) {
+        openFieldModal(item);
+        return;
+      }
       const img = item.querySelector('img');
       lbImg.src = img.src;
       lbImg.alt = img.alt;
@@ -86,4 +91,187 @@ document.addEventListener('DOMContentLoaded', () => {
   lbClose.addEventListener('click', closeLb);
   lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
+
+  // ===== PROJECT MODAL =====
+  const projectModal = document.getElementById('projectModal');
+  const projectModalOverlay = document.getElementById('projectModalOverlay');
+  const projectModalClose = document.getElementById('projectModalClose');
+  const projectCards = document.querySelectorAll('.proj-card');
+
+  // Project data - each card will have these data attributes
+  const openProjectModal = (card) => {
+    const num = card.dataset.num || '';
+    const title = card.dataset.title || card.querySelector('.proj-title')?.textContent || '';
+    const cat = card.dataset.cat || card.querySelector('.proj-cat')?.textContent || '';
+    const desc = card.dataset.desc || card.querySelector('.proj-desc')?.textContent || '';
+    const tech = card.dataset.tech ? JSON.parse(card.dataset.tech) : [];
+    const role = card.dataset.role || '';
+    const tags = card.dataset.tags ? JSON.parse(card.dataset.tags) : [];
+    const outcome = card.dataset.outcome || '';
+    const imgSrc = card.dataset.img || card.querySelector('img')?.src || '';
+
+    document.getElementById('projectModalNum').textContent = num;
+    document.getElementById('projectModalTitle').textContent = title;
+    document.getElementById('projectModalCat').textContent = cat;
+    document.getElementById('projectModalDesc').textContent = desc;
+    document.getElementById('projectModalRole').textContent = role;
+    document.getElementById('projectModalOutcome').textContent = outcome;
+
+    // Technical details list
+    const techList = document.getElementById('projectModalTech');
+    techList.innerHTML = '';
+    tech.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      techList.appendChild(li);
+    });
+
+    // Tags
+    const tagsContainer = document.getElementById('projectModalTags');
+    tagsContainer.innerHTML = '';
+    tags.forEach(tag => {
+      const span = document.createElement('span');
+      span.className = 'exp-tag';
+      span.textContent = tag;
+      tagsContainer.appendChild(span);
+    });
+
+    // Image
+    const modalImg = document.getElementById('projectModalImg');
+    if (imgSrc) {
+      modalImg.src = imgSrc;
+      modalImg.alt = title;
+      modalImg.style.display = 'block';
+    } else {
+      modalImg.style.display = 'none';
+    }
+
+    projectModal.classList.add('open');
+    projectModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeProjectModal = () => {
+    projectModal.classList.remove('open');
+    projectModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  projectCards.forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', (e) => {
+      // Don't open modal if clicking on a link inside
+      if (e.target.tagName === 'A') return;
+      openProjectModal(card);
+    });
+    // Keyboard accessibility
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openProjectModal(card);
+      }
+    });
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.setAttribute('aria-label', `Lihat detail proyek ${card.querySelector('.proj-title')?.textContent || ''}`);
+  });
+
+  projectModalClose.addEventListener('click', closeProjectModal);
+  projectModalOverlay.addEventListener('click', closeProjectModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && projectModal.classList.contains('open')) {
+      closeProjectModal();
+    }
+  });
+
+  // ===== FIELD WORK MODAL =====
+  const fieldModal = document.getElementById('fieldModal');
+  const fieldModalOverlay = document.getElementById('fieldModalOverlay');
+  const fieldModalClose = document.getElementById('fieldModalClose');
+  const galItems = document.querySelectorAll('.gal-item');
+
+  const openFieldModal = (item) => {
+    const num = item.dataset.num || '';
+    const title = item.dataset.title || item.querySelector('figcaption')?.textContent || '';
+    const cat = item.dataset.cat || item.dataset.cat-label || '';
+    const location = item.dataset.location || '';
+    const desc = item.dataset.desc || item.dataset.desc || '';
+    const challenge = item.dataset.challenge || '';
+    const equipment = item.dataset.equipment ? JSON.parse(item.dataset.equipment) : [];
+    const tags = item.dataset.tags ? JSON.parse(item.dataset.tags) : [];
+    const imgSrc = item.querySelector('img')?.src || '';
+
+    document.getElementById('fieldModalNum').textContent = num;
+    document.getElementById('fieldModalTitle').textContent = title;
+    document.getElementById('fieldModalCat').textContent = cat;
+    document.getElementById('fieldModalLocation').textContent = location;
+    document.getElementById('fieldModalDesc').textContent = desc;
+    document.getElementById('fieldModalChallenge').textContent = challenge;
+
+    // Equipment list
+    const equipList = document.getElementById('fieldModalEquipment');
+    equipList.innerHTML = '';
+    equipment.forEach(eq => {
+      const li = document.createElement('li');
+      li.textContent = eq;
+      equipList.appendChild(li);
+    });
+
+    // Tags
+    const tagsContainer = document.getElementById('fieldModalTags');
+    tagsContainer.innerHTML = '';
+    tags.forEach(tag => {
+      const span = document.createElement('span');
+      span.className = 'exp-tag';
+      span.textContent = tag;
+      tagsContainer.appendChild(span);
+    });
+
+    // Image
+    const modalImg = document.getElementById('fieldModalImg');
+    if (imgSrc) {
+      modalImg.src = imgSrc;
+      modalImg.alt = title;
+      modalImg.style.display = 'block';
+    } else {
+      modalImg.style.display = 'none';
+    }
+
+    fieldModal.classList.add('open');
+    fieldModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeFieldModal = () => {
+    fieldModal.classList.remove('open');
+    fieldModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+
+  galItems.forEach(item => {
+    // Only add click for modal if it has detailed modal data
+    if (item.dataset.desc || item.dataset.location || item.dataset.equipment) {
+      item.style.cursor = 'pointer';
+      item.addEventListener('click', (e) => {
+        openFieldModal(item);
+      });
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openFieldModal(item);
+        }
+      });
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'button');
+      item.setAttribute('aria-label', `Lihat detail ${item.querySelector('figcaption')?.textContent || ''}`);
+    }
+  });
+
+  fieldModalClose.addEventListener('click', closeFieldModal);
+  fieldModalOverlay.addEventListener('click', closeFieldModal);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && fieldModal.classList.contains('open')) {
+      closeFieldModal();
+    }
+  });
 });

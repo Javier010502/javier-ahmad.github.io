@@ -839,9 +839,7 @@ details.accordion summary::marker { color: var(--cyan); }
   .nv-cta { display: inline-block; }
   .sec { padding: var(--space-20) 0; }
   .proj-featured { grid-template-columns: 1fr; }
-}
-
-@media (prefers-reduced-motion: reduce) {
+\n\n/* ====== MODAL STYLES ====== */\n/* Modal base */\n.modal {\n  position: fixed;\n  inset: 0;\n  z-index: 200;\n  display: none;\n  align-items: center;\n  justify-content: center;\n  flex-direction: column;\n  background: rgba(5,5,9,.94);\n  backdrop-filter: blur(12px);\n  -webkit-backdrop-filter: blur(12px);\n  padding: var(--space-12);\n}\n\n.modal-overlay {\n  position: absolute;\n  inset: 0;\n  background: rgba(0,0,0,.6);\n}\n\n.modal-content {\n  background: var(--glass-bg);\n  border: 1px solid var(--glass-border);\n  border-radius: var(--radius-lg);\n  padding: var(--space-8);\n  max-width: 90vw;\n  max-height: 90vh;\n  overflow: auto;\n  position: relative;\n}\n\n.modal-close {\n  position: absolute;\n  top: var(--space-8);\n  right: var(--space-12);\n  background: none;\n  border: none;\n  color: #fff;\n  font-size: 2.2rem;\n  cursor: pointer;\n  line-height: 1;\n  opacity: .5;\n  transition: opacity .3s, transform .3s var(--ease-spring);\n}\n\n.modal-close:hover {\n  opacity: 1;\n  transform: scale(1.15);\n}\n\n.modal-body {\n  max-height: 70vh;\n  overflow-y: auto;\n}\n\n.modal-section {\n  margin-bottom: var(--space-8);\n}\n\n.modal-section h3 {\n  margin-bottom: var(--space-4);\n}\n\n.modal-tags {\n  display: flex;\n  gap: var(--space-2);\n  flex-wrap: wrap;\n}\n\n.modal-image {\n  text-align: center;\n  margin: var(--space-8) 0;\n}\n\n.modal-image img {\n  max-width: 100%;\n  max-height: 250px;\n  object-fit: cover;\n  border-radius: var(--radius-lg);\n}\n\n/* Field work modal */\n.field-modal .modal-content { padding: var(--space-6); }\n.field-modal .modal-close { top: var(--space-6); right: var(--space-10); font-size: 2rem; }\n.field-modal .modal-body { max-height: 80vh; }\n\n/* End of modal styles */\n\n@media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
