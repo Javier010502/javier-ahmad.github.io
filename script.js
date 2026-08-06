@@ -98,6 +98,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectModalClose = document.getElementById('projectModalClose');
   const projectCards = document.querySelectorAll('.proj-card');
 
+  // State untuk gallery multi-foto
+  let projectGalImages = [];
+  let projectGalIndex = 0;
+
+  const setProjectGalleryImage = () => {
+    const modalImg = document.getElementById('projectModalImg');
+    if (!projectGalImages.length) return;
+    modalImg.src = projectGalImages[projectGalIndex];
+    modalImg.alt = `${document.getElementById('projectModalTitle').textContent} — foto ${projectGalIndex + 1}`;
+    document.getElementById('projectGalCounter').textContent =
+      `${projectGalIndex + 1} / ${projectGalImages.length}`;
+  };
+
+  document.getElementById('projectGalPrev').addEventListener('click', () => {
+    if (!projectGalImages.length) return;
+    projectGalIndex = (projectGalIndex - 1 + projectGalImages.length) % projectGalImages.length;
+    setProjectGalleryImage();
+  });
+  document.getElementById('projectGalNext').addEventListener('click', () => {
+    if (!projectGalImages.length) return;
+    projectGalIndex = (projectGalIndex + 1) % projectGalImages.length;
+    setProjectGalleryImage();
+  });
+
   // Project data - each card will have these data attributes
   const openProjectModal = (card) => {
     const num = card.dataset.num || '';
@@ -136,14 +160,25 @@ document.addEventListener('DOMContentLoaded', () => {
       tagsContainer.appendChild(span);
     });
 
-    // Image
+    // Image (+ multi-foto gallery jika ada data-imgs)
     const modalImg = document.getElementById('projectModalImg');
-    if (imgSrc) {
-      modalImg.src = imgSrc;
-      modalImg.alt = title;
-      modalImg.style.display = 'block';
+    const gallery = document.getElementById('projectModalGallery');
+    const imgs = card.dataset.imgs ? JSON.parse(card.dataset.imgs) : [];
+    if (imgs.length > 1) {
+      projectGalImages = imgs;
+      projectGalIndex = 0;
+      setProjectGalleryImage();
+      gallery.hidden = false;
     } else {
-      modalImg.style.display = 'none';
+      projectGalImages = [];
+      gallery.hidden = true;
+      if (imgSrc) {
+        modalImg.src = imgSrc;
+        modalImg.alt = title;
+        modalImg.style.display = 'block';
+      } else {
+        modalImg.style.display = 'none';
+      }
     }
 
     projectModal.classList.add('open');
@@ -190,6 +225,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const fieldModalClose = document.getElementById('fieldModalClose');
   const galItems = document.querySelectorAll('.gal-item');
 
+  // State untuk gallery multi-foto
+  let fieldGalImages = [];
+  let fieldGalIndex = 0;
+
+  const setFieldGalleryImage = () => {
+    const modalImg = document.getElementById('fieldModalImg');
+    if (!fieldGalImages.length) return;
+    modalImg.src = fieldGalImages[fieldGalIndex];
+    modalImg.alt = `${document.getElementById('fieldModalTitle').textContent} — foto ${fieldGalIndex + 1}`;
+    document.getElementById('fieldGalCounter').textContent =
+      `${fieldGalIndex + 1} / ${fieldGalImages.length}`;
+  };
+
+  document.getElementById('fieldGalPrev').addEventListener('click', () => {
+    if (!fieldGalImages.length) return;
+    fieldGalIndex = (fieldGalIndex - 1 + fieldGalImages.length) % fieldGalImages.length;
+    setFieldGalleryImage();
+  });
+  document.getElementById('fieldGalNext').addEventListener('click', () => {
+    if (!fieldGalImages.length) return;
+    fieldGalIndex = (fieldGalIndex + 1) % fieldGalImages.length;
+    setFieldGalleryImage();
+  });
+
   const openFieldModal = (item) => {
     const num = item.dataset.num || '';
     const title = item.dataset.title || item.querySelector('figcaption')?.textContent || '';
@@ -227,14 +286,25 @@ document.addEventListener('DOMContentLoaded', () => {
       tagsContainer.appendChild(span);
     });
 
-    // Image
+    // Image (+ multi-foto gallery jika ada data-imgs)
     const modalImg = document.getElementById('fieldModalImg');
-    if (imgSrc) {
-      modalImg.src = imgSrc;
-      modalImg.alt = title;
-      modalImg.style.display = 'block';
+    const gallery = document.getElementById('fieldModalGallery');
+    const imgs = item.dataset.imgs ? JSON.parse(item.dataset.imgs) : [];
+    if (imgs.length > 1) {
+      fieldGalImages = imgs;
+      fieldGalIndex = 0;
+      setFieldGalleryImage();
+      gallery.hidden = false;
     } else {
-      modalImg.style.display = 'none';
+      fieldGalImages = [];
+      gallery.hidden = true;
+      if (imgSrc) {
+        modalImg.src = imgSrc;
+        modalImg.alt = title;
+        modalImg.style.display = 'block';
+      } else {
+        modalImg.style.display = 'none';
+      }
     }
 
     fieldModal.classList.add('open');

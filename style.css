@@ -551,67 +551,6 @@ img { max-width: 100%; display: block; }
 }
 .skills-spec dd:last-of-type { border-bottom: 0; }
 
-/* ====== LEARNING ====== */
-.sec-learning { border-top: 1px solid var(--glass-border); }
-.learn-stack { display: grid; gap: var(--space-6); max-width: 640px; }
-.learn-item {
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-6) var(--space-8);
-  transition: border-color .4s var(--ease);
-}
-.learn-item:hover { border-color: var(--border-hover); }
-.learn-title-row { display: flex; align-items: center; gap: var(--space-4); margin-bottom: var(--space-4); }
-.learn-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px; height: 36px;
-  border-radius: var(--radius);
-  background: rgba(20, 184, 166, .1);
-  border: 1px solid rgba(20, 184, 166, .2);
-  font-family: var(--font-mono);
-  font-size: .58rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  flex-shrink: 0;
-}
-.learn-title-row h3 { font-size: 1rem; font-weight: 600; margin-bottom: 1px; }
-.learn-src { font-size: .78rem; color: var(--text-faint); font-family: var(--font-mono); }
-.learn-pct {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: .82rem;
-  color: var(--text-faint);
-}
-.learn-bar { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: var(--space-4); overflow: hidden; }
-.learn-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--cyan), var(--cyan-bright));
-  border-radius: 2px;
-  transition: width 1s var(--ease);
-}
-.learn-miles { display: grid; gap: 5px; }
-.learn-mile {
-  font-size: .84rem;
-  color: var(--text-faint);
-  padding-left: 16px;
-  position: relative;
-}
-.learn-mile::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 8px;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--border);
-}
-.learn-mile.done::before { background: var(--cyan); box-shadow: 0 0 6px rgba(20,184,166,.5); }
-.learn-mile.done { color: var(--text-dim); }
-
 /* ====== ACHIEVEMENTS ====== */
 .sec-achievements { background: var(--bg-alt); border-top: 1px solid var(--glass-border); }
 .ach-list {
@@ -811,6 +750,44 @@ details.accordion summary {
   gap: var(--space-4);
 }
 details.accordion summary::marker { color: var(--cyan); }
+
+/* ====== MODAL GALLERY (multi-foto) ====== */
+.modal-gallery {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+.modal-gallery[hidden] { display: none; }
+.gal-arrow {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: background .3s, border-color .3s, transform .2s;
+}
+.gal-arrow:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--cyan);
+  transform: scale(1.1);
+}
+.gal-arrow:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.gal-counter {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--text-dim);
+  min-width: 60px;
+  text-align: center;
+}
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 880px) {

@@ -263,71 +263,11 @@
   </div>
 </section>
 
-<section class="sec sec-learning" id="learning">
-  <div class="sec-inner">
-    <header class="sec-header rv">
-      <h2 class="sec-title">Learning <span class="hl">Track</span></h2>
-      <p class="sec-desc">Sertifikasi dan kursus yang sedang dijalani untuk memperkuat kompetensi kontrol & instrumentasi.</p>
-    </header>
-    <div class="learn-stack">
-      <div class="learn-item rv">
-        <div class="learn-title-row">
-          <div class="learn-icon">PLC</div>
-          <div>
-            <h3>Master PLC Programming</h3>
-            <span class="learn-src">Alison — CPD Certificate</span>
-          </div>
-          <span class="learn-pct">5%</span>
-        </div>
-        <div class="learn-bar"><div class="learn-fill" style="width:5%"></div></div>
-        <div class="learn-miles">
-          <span class="learn-mile done">Enrolled & scheduled</span>
-          <span class="learn-mile todo">Module 1 — Intro & PLC Architecture</span>
-          <span class="learn-mile todo">Module 2 — Ladder Logic Fundamentals</span>
-          <span class="learn-mile todo">Module 3 — Timers, Counters & Comparators</span>
-          <span class="learn-mile todo">Module 4 — Advanced Instructions</span>
-          <span class="learn-mile todo">Final Exam & Certificate</span>
-        </div>
-      </div>
-      <div class="learn-item rv">
-        <div class="learn-title-row">
-          <div class="learn-icon">CERT</div>
-          <div>
-            <h3>PLC Free Certificate</h3>
-            <span class="learn-src">Itronix Solutions — MCQ Quiz</span>
-          </div>
-          <span class="learn-pct">0%</span>
-        </div>
-        <div class="learn-bar"><div class="learn-fill" style="width:0%"></div></div>
-        <div class="learn-miles">
-          <span class="learn-mile todo">Ambil quiz PLC Programmer Certification</span>
-          <span class="learn-mile todo">Dapatkan sertifikat verified</span>
-        </div>
-      </div>
-      <div class="learn-item rv">
-        <div class="learn-title-row">
-          <div class="learn-icon">SIM</div>
-          <div>
-            <h3>PLC Simulation Practice</h3>
-            <span class="learn-src">PLC Academy — OpenPLC</span>
-          </div>
-          <span class="learn-pct">0%</span>
-        </div>
-        <div class="learn-bar"><div class="learn-fill" style="width:0%"></div></div>
-        <div class="learn-miles">
-          <span class="learn-mile todo">Install OpenPLC / simulator</span>
-          <span class="learn-mile todo">Praktik ladder logic sederhana</span>
-          <span class="learn-mile todo">Timer & Counter simulation</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="sec sec-achievements" id="achievements">
   <div class="sec-inner">
-     <header class="sec-header rv">
-      <h2 class="sec-title">Achivements</h2>
+    <header class="sec-header rv">
+      <h2 class="sec-title">Achievements</h2>
+    </header>
     <ul class="ach-list rv">
       <li><span class="ach-year">2022</span> 1st Place — Olgenas Paper Competition. Utilisasi Syngas dalam Integrated Solar Combined Cycle di lahan bekas tambang Kalimantan.</li>
       <li><span class="ach-year">2022</span> PIMNAS — Student Creativity Week. Nearly Zero Energy Building IKN dengan Microbial Fuel Cell & Smart Windows.</li>
@@ -357,7 +297,8 @@
         data-desc="Instalasi dan commissioning motor High-Efficiency IE3 untuk sistem pendingin turbine gas 650MW. Melibatkan pengkabelan daya, alignment coupling, dan verifikasi parameter motor (arus, tegangan, suhu bearing, vibrasi) sesuai standar IEC."
         data-equipment='["Motor IE3 High-Efficiency (ABB/Siemens)","Soft Starter / VFD","Coupling alignment tools","Vibration analyzer","Thermal camera","Megger tester"]'
         data-challenge="Pengalaman alignment presisi coupling pada unit besar 650MW dengan toleransi ketat. Solusi: menggunakan laser alignment tool dan verifikasi berulang di berbagai beban operasi."
-        data-tags='["Motor IE3","650MW","Alignment","Commissioning","PLTGU"]'>
+        data-tags='["Motor IE3","650MW","Alignment","Commissioning","PLTGU"]'
+        data-imgs='["assets/photos/01.jpg","assets/photos/05.jpg","assets/photos/06.jpg"]'>
         <img src="assets/photos/01.jpg" alt="Motor IE3 Muara Tawar" loading="lazy">
         <figcaption>High-Efficiency Motor (IE3) — 650MW Muara Tawar Plant</figcaption>
       </figure>
@@ -393,7 +334,8 @@
         data-desc="Konfigurasi sistem monitoring furnace berbasis azbil untuk laboratorium kimia ITB. Termasuk setup SCADA/HMI, trending data suhu/tekanan, alarm management, dan laporan otomatis."
         data-equipment='["azbil DCS/SCADA System","HMI/Operator Station","Temperature Transmitter (Thermocouple/RTD)","Pressure Transmitter","Data Historian","Alarm Logger"]'
         data-challenge="Integrasi multi-parameter furnace ke SCADA dengan sampling rate tinggi untuk trending akurat. Solusi: optimasi scan time, konfigurasi exception reporting, validasi data historis."
-        data-tags='["azbil","SCADA","Furnace","ITB","Monitoring"]'>
+        data-tags='["azbil","SCADA","Furnace","ITB","Monitoring"]'
+        data-imgs='["assets/photos/04.jpg","assets/photos/09.jpg"]'>
         <img src="assets/photos/04.jpg" alt="Panel Monitoring ITB" loading="lazy">
         <figcaption>Monitoring & Machine C/P (azbil) — Furnace Monitoring ITB</figcaption>
       </figure>
@@ -480,6 +422,12 @@
       </div>
       <div class="modal-image">
         <img id="projectModalImg" src="" alt="">
+        <!-- ===== MULTI-FOTO GALLERY (optional: isi via data-imgs di kartu) ===== -->
+        <div class="modal-gallery" id="projectModalGallery" hidden>
+          <button class="gal-arrow gal-prev" id="projectGalPrev" aria-label="Foto sebelumnya">&#10094;</button>
+          <button class="gal-arrow gal-next" id="projectGalNext" aria-label="Foto berikutnya">&#10095;</button>
+          <p class="gal-counter" id="projectGalCounter"></p>
+        </div>
       </div>
       <div class="modal-details">
         <div class="modal-section">
@@ -520,6 +468,12 @@
       </div>
       <div class="modal-image">
         <img id="fieldModalImg" src="" alt="">
+        <!-- ===== MULTI-FOTO GALLERY (optional: isi via data-imgs di kartu) ===== -->
+        <div class="modal-gallery" id="fieldModalGallery" hidden>
+          <button class="gal-arrow gal-prev" id="fieldGalPrev" aria-label="Foto sebelumnya">&#10094;</button>
+          <button class="gal-arrow gal-next" id="fieldGalNext" aria-label="Foto berikutnya">&#10095;</button>
+          <p class="gal-counter" id="fieldGalCounter"></p>
+        </div>
       </div>
       <div class="modal-details">
         <div class="modal-section">
