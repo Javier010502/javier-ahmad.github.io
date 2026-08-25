@@ -132,6 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const role = card.dataset.role || '';
     const tags = card.dataset.tags ? JSON.parse(card.dataset.tags) : [];
     const outcome = card.dataset.outcome || '';
+    const repo = card.dataset.repo || '';
+    const dateAdded = card.dataset.date || '';
     const imgSrc = card.dataset.img || card.querySelector('img')?.src || '';
 
     document.getElementById('projectModalNum').textContent = num;
@@ -159,6 +161,31 @@ document.addEventListener('DOMContentLoaded', () => {
       span.textContent = tag;
       tagsContainer.appendChild(span);
     });
+
+    // Links (repo + date) — show only if present
+    const linksSection = document.getElementById('projectModalLinks');
+    const linksInner = document.getElementById('projectModalLinksInner');
+    if (repo || dateAdded) {
+      linksInner.innerHTML = '';
+      if (repo) {
+        const a = document.createElement('a');
+        a.href = repo;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        a.className = 'exp-tag';
+        a.textContent = '🔗 GitHub Repository';
+        linksInner.appendChild(a);
+      }
+      if (dateAdded) {
+        const span = document.createElement('span');
+        span.className = 'exp-tag';
+        span.textContent = `📅 Ditambahkan: ${dateAdded}`;
+        linksInner.appendChild(span);
+      }
+      linksSection.hidden = false;
+    } else {
+      linksSection.hidden = true;
+    }
 
     // Image (+ multi-foto gallery jika ada data-imgs)
     const modalImg = document.getElementById('projectModalImg');

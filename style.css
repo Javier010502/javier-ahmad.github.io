@@ -460,6 +460,18 @@ img { max-width: 100%; display: block; }
   border-color: var(--cyan);
   color: var(--cyan);
 }
+/* Links section in project modal — GitHub link styled as clickable */
+.modal-links { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.modal-links a.exp-tag {
+  text-decoration: none;
+  cursor: pointer;
+  background: rgba(0, 209, 178, 0.08);
+}
+.modal-links a.exp-tag:hover {
+  background: rgba(0, 209, 178, 0.16);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
 
 /* ====== PROJECTS ====== */
 .sec-projects { background: var(--bg-alt); border-top: 1px solid var(--glass-border); }

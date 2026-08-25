@@ -242,6 +242,24 @@
         <p class="proj-desc">HMI monitoring area pelabuhan Tanjung Mas — pompa polder, kolam, dan alarm.</p>
         <span class="proj-meta">Pelindo · 2025-2026</span>
       </article>
+      <article class="proj-card rv" tabindex="0"
+        data-num="06"
+        data-title="difflens — Offline Git Changelog"
+        data-cat="Python · CLI Tool"
+        data-desc="CLI Python yang menghasilkan changelog terstruktur dari git diff secara offline — tanpa API key, tanpa jaringan, tanpa panggilan LLM. Menggunakan Typer untuk antarmuka terminal dan Rich untuk tampilan lensa (panel per file dan intent), mendukung output Indonesia dan Inggris, serta saran judul PR dan export Markdown atau JSON."
+        data-tech='["Typer CLI + flag parsing (--lang, --group-by, --format, --out, --pr)","GitPython: baca repo, branch, dan diff","Parser unified-diff menjadi model terstruktur (DiffHunk / ParsedFile)","Heuristik deterministik: deteksi intent + bullet bilingual ID/EN","Render Rich: TTY lens panel, Markdown, JSON","Saran judul PR (conventional-commit) + konfigurasi persisten"]'
+        data-role="Membangun alat CLI mandiri untuk mempercepat dokumentasi perubahan kode — deterministik, instan, dan sepenuhnya offline."
+        data-tags='["Python","Typer","Rich","GitPython","CLI","Offline"]'
+        data-outcome="Tool siap pakai (pip install -e .) dengan 10 unit test lolos dan verifikasi ad-hoc sukses — changelog terstruktur dihasilkan instan dari git diff."
+        data-repo="https://github.com/javier010502/difflens.git"
+        data-date="25 Agustus 2026"
+        data-img="">
+        <div class="proj-num">06</div>
+        <h3 class="proj-title">difflens — Offline Git Changelog</h3>
+        <p class="proj-cat">Python · CLI Tool</p>
+        <p class="proj-desc">CLI Python yang menghasilkan changelog terstruktur dari git diff secara offline. Typer untuk antarmuka terminal, Rich untuk tampilan lensa, output Indonesia/Inggris, saran judul PR, dan export Markdown/JSON.</p>
+        <span class="proj-meta">CLI Tool · ditambahkan 25 Agustus 2026</span>
+      </article>
     </div>
   </div>
 </section>
@@ -443,6 +461,10 @@
         <div class="modal-section">
           <h3>Hasil / Output</h3>
           <p id="projectModalOutcome"></p>
+        </div>
+        <div class="modal-section" id="projectModalLinks" hidden>
+          <h3>Links</h3>
+          <div class="modal-links" id="projectModalLinksInner"></div>
         </div>
       </div>
     </div>
